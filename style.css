@@ -267,6 +267,7 @@ p { color: var(--text-secondary); line-height: 1.75; }
 }
 
 .nav-toggle span {
+    display: block;
     width: 18px;
     height: 2px;
     background: var(--text);
