@@ -57,8 +57,9 @@ python -m http.server 8080
 │   ├── animations.css  # Scroll reveal, keyframes
 │   └── responsive.css  # Media queries
 ├── js/
-│   ├── include.js      # Partial loader (header/footer injection)
-│   └── main.js         # Scroll reveal, counters, rotating text
+│   ├── config.js        # Site-wide URL configuration (GitHub links, contact)
+│   ├── include.js        # Partial loader & config resolver
+│   └── main.js           # Scroll reveal, counters, rotating text
 ├── partials/
 │   ├── header.html     # Background effects + navbar (injected on load)
 │   └── footer.html     # Footer section (injected on load)

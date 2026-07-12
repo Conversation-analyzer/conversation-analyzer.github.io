@@ -106,23 +106,23 @@
                 <p>Find us across these platforms. Every link is a doorway to the conversation.</p>
             </div>
             <div class="community-grid reveal">
-                <a class="community-card" href="https://github.com/Conversation-analyzer" target="_blank">
+                <a class="community-card" data-github="base" target="_blank">
                     <i class="fa-brands fa-github"></i>
                     <span>GitHub</span>
                 </a>
-                <a class="community-card" href="https://github.com/Conversation-analyzer/discussions" target="_blank">
+                <a class="community-card" data-github="discussions" target="_blank">
                     <i class="fa-solid fa-comments"></i>
                     <span>Discussions</span>
                 </a>
-                <a class="community-card" href="https://github.com/Conversation-analyzer/issues" target="_blank">
+                <a class="community-card" data-github="issues" target="_blank">
                     <i class="fa-solid fa-bug"></i>
                     <span>Issues</span>
                 </a>
-                <a class="community-card" href="https://github.com/Conversation-analyzer/pulls" target="_blank">
+                <a class="community-card" data-github="pulls" target="_blank">
                     <i class="fa-solid fa-code-pull-request"></i>
                     <span>Pull Requests</span>
                 </a>
-                <a class="community-card" href="https://github.com/Conversation-analyzer/releases" target="_blank">
+                <a class="community-card" data-github="releases" target="_blank">
                     <i class="fa-solid fa-tag"></i>
                     <span>Releases</span>
                 </a>
@@ -134,7 +134,7 @@
                     <i class="fa-brands fa-x-twitter"></i>
                     <span>X / Twitter</span>
                 </a>
-                <a class="community-card" href="mailto:chnrndr3@email.com">
+                <a class="community-card" data-email="contact">
                     <i class="fa-solid fa-envelope"></i>
                     <span>Email</span>
                 </a>
@@ -207,8 +207,8 @@
                     <h3>Placeholder</h3>
                     <p style="margin-top:4px">Project Lead &amp; Maintainer</p>
                     <div style="margin-top:14px;display:flex;gap:10px;justify-content:center">
-                        <a class="btn btn-sm btn-secondary" href="https://github.com/Conversation-analyzer" target="_blank"><i class="fa-brands fa-github"></i></a>
-                        <a class="btn btn-sm btn-secondary" href="mailto:chnrndr3@email.com"><i class="fa-solid fa-envelope"></i></a>
+                        <a class="btn btn-sm btn-secondary" data-github="base" target="_blank"><i class="fa-brands fa-github"></i></a>
+                        <a class="btn btn-sm btn-secondary" data-email="contact"><i class="fa-solid fa-envelope"></i></a>
                     </div>
                 </div>
                 <div class="card" style="text-align:center">
@@ -246,7 +246,7 @@
                     <i class="fa-brands fa-discord"></i>
                     <span>Discord</span>
                 </a>
-                <a class="community-card" href="mailto:chnrndr3@email.com">
+                <a class="community-card" data-email="contact">
                     <i class="fa-solid fa-envelope"></i>
                     <span>Email Newsletter</span>
                 </a>
@@ -261,7 +261,7 @@
                 <h2>Ready to get involved?</h2>
                 <p>Star the repo, open your first issue, or jump into a discussion. Every contribution counts.</p>
                 <div class="cta-buttons">
-                    <a class="btn btn-primary btn-lg" href="https://github.com/Conversation-analyzer" target="_blank">
+                    <a class="btn btn-primary btn-lg" data-github="base" target="_blank">
                         <i class="fa-brands fa-github"></i> View on GitHub
                     </a>
                     <a class="btn btn-secondary btn-lg" href="contributing">
@@ -274,6 +274,7 @@
 
     <div id="site-footer"></div>
 
+    <script src="js/config.js"></script>
     <script src="js/include.js"></script>
     <script src="js/main.js"></script>
 </body>
