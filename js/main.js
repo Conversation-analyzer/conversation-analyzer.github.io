@@ -8,53 +8,6 @@
     const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     /* ==========================================================
-       Shared Navigation
-    ========================================================== */
-
-    function initNavbar() {
-        const navbar = document.querySelector(".navbar");
-        if (!navbar) return;
-
-        let ticking = false;
-        window.addEventListener("scroll", () => {
-            if (ticking) return;
-            ticking = true;
-            requestAnimationFrame(() => {
-                navbar.classList.toggle("scrolled", window.scrollY > 30);
-                ticking = false;
-            });
-        }, { passive: true });
-    }
-
-    function initMobileNav() {
-        const toggle = document.querySelector(".nav-toggle");
-        const links = document.querySelector(".nav-links");
-        if (!toggle || !links) return;
-
-        toggle.addEventListener("click", () => {
-            const open = links.classList.toggle("open");
-            toggle.setAttribute("aria-expanded", String(open));
-        });
-
-        links.querySelectorAll("a").forEach(a => {
-            a.addEventListener("click", () => {
-                links.classList.remove("open");
-                toggle.setAttribute("aria-expanded", "false");
-            });
-        });
-    }
-
-    function setActiveNavLink() {
-        const path = location.pathname.split("/").pop() || "index.html";
-        document.querySelectorAll(".nav-links a").forEach(a => {
-            const href = a.getAttribute("href");
-            if (href === path || (path === "" && href === "index.html")) {
-                a.classList.add("active");
-            }
-        });
-    }
-
-    /* ==========================================================
        Scroll Reveal
     ========================================================== */
 
@@ -170,9 +123,6 @@
     ========================================================== */
 
     document.addEventListener("DOMContentLoaded", () => {
-        initNavbar();
-        initMobileNav();
-        setActiveNavLink();
         initReveal();
         initCounters();
         initBarFills();
