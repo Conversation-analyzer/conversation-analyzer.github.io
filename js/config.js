@@ -7,7 +7,7 @@ window.APP_CONFIG = {
 
     /* GitHub ----------------------------------------------------------- */
     github: {
-        base:            "https://github.com/Conversation-analyzer",
+        base:            "https://github.com/Conversation-analyzer/conversation-analyzer.github.io",
         repo:            "https://github.com/Conversation-analyzer/conversation-analyzer.github.io",
         issues:          "https://github.com/Conversation-analyzer/conversation-analyzer.github.io/issues",
         goodFirstIssue:  "https://github.com/Conversation-analyzer/conversation-analyzer.github.io/issues?q=label%3A%22good+first+issue%22",

@@ -9,8 +9,8 @@ The official website and documentation for [AI Conversation Analyzer](https://co
 | [Home](index.html) | Landing page with hero, features, how it works, screenshots, and community |
 | [Features](features.html) | Detailed breakdown of every capability |
 | [Docs](docs.html) | Documentation hub (currently being written) |
-| [Community](community.html) | Community links, contributing guide, code of conduct |
-| [Contributing](contributing.html) | Step-by-step guide for contributors |
+| [Community](community.html) | Community links, contribution guide, code of conduct |
+| [Contribution](contribution.html) | Step-by-step guide for contributors |
 | [Changelog](changelog.html) | Release history and upcoming changes |
 | [Roadmap](roadmap.html) | Project roadmap organized by phases |
 | [About](about.html) | Mission, values, and team |
@@ -39,7 +39,7 @@ python -m http.server 8080
 ├── features.html       # Features detail page
 ├── docs.html           # Documentation (placeholder)
 ├── community.html      # Community hub
-├── contributing.html   # Contributing guide
+├── contribution.html   # Contribution guide
 ├── changelog.html      # Release history
 ├── roadmap.html        # Project roadmap
 ├── about.html          # About the project
@@ -53,7 +53,7 @@ python -m http.server 8080
 │   ├── layout.css      # Sections, grids, page header
 │   ├── footer.css      # Footer styles
 │   ├── home.css        # Hero, dashboard, features grid
-│   ├── pages.css       # Docs, changelog, roadmap, about, contributing
+│   ├── pages.css       # Docs, changelog, roadmap, about, contribution
 │   ├── animations.css  # Scroll reveal, keyframes
 │   └── responsive.css  # Media queries
 ├── js/
