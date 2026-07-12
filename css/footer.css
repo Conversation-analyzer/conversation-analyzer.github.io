@@ -1,0 +1,68 @@
+/* ==========================================================================
+   AI Conversation Analyzer — Footer
+   ========================================================================== */
+
+/* ===========================
+   Footer
+   =========================== */
+
+.footer {
+    padding: 64px 0 32px;
+    border-top: 1px solid var(--border-light);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr repeat(3, 1fr);
+    gap: 48px;
+    margin-bottom: 48px;
+}
+
+.footer-brand p {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 12px;
+    max-width: 300px;
+    line-height: 1.7;
+}
+
+.footer-col h4 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 18px;
+}
+
+.footer-col a {
+    display: block;
+    padding: 5px 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+    transition: color var(--transition);
+}
+
+.footer-col a:hover { color: var(--primary); }
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-light);
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.footer-socials {
+    display: flex;
+    gap: 16px;
+}
+
+.footer-socials a {
+    color: var(--muted);
+    font-size: 18px;
+    transition: color var(--transition);
+}
+
+.footer-socials a:hover { color: var(--primary); }

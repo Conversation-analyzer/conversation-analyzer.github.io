@@ -44,8 +44,20 @@ python -m http.server 8080
 ├── roadmap.html        # Project roadmap
 ├── about.html          # About the project
 ├── 404.html            # Error page
-├── style.css           # Design system & all styles
-├── script.js           # Shared JS (nav, reveal, counters)
+├── css/
+│   ├── tokens.css      # Design tokens (CSS variables)
+│   ├── base.css        # Reset, typography, utilities
+│   ├── background.css  # Background effects
+│   ├── navigation.css  # Navbar styles
+│   ├── components.css  # Buttons, cards, badges, tags
+│   ├── layout.css      # Sections, grids, page header
+│   ├── footer.css      # Footer styles
+│   ├── home.css        # Hero, dashboard, features grid
+│   ├── pages.css       # Docs, changelog, roadmap, about, contributing
+│   ├── animations.css  # Scroll reveal, keyframes
+│   └── responsive.css  # Media queries
+├── js/
+│   └── main.js         # Nav, reveal, counters, rotating text
 └── README.md
 ```
 
