@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features — AI Conversation Analyzer</title>
+    <meta name="description" content="Explore every feature of AI Conversation Analyzer: conversation visualization, timeline analysis, token metrics, tool call inspection, reasoning breakdown, and more.">
+    <meta name="keywords" content="AI, conversation, analyzer, features, visualization, tokens, reasoning, tools, latency, cost">
+    <meta property="og:title" content="Features — AI Conversation Analyzer">
+    <meta property="og:description" content="Explore every feature of AI Conversation Analyzer.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Effects -->
+    <div class="bg-effects">
+        <div class="bg-grid"></div>
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-brand">
+                <span class="nav-brand-dot"></span>
+                AI Conversation Analyzer
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="features.html" class="active">Features</a>
+                <a href="docs.html">Docs</a>
+                <a href="community.html">Community</a>
+                <a href="roadmap.html">Roadmap</a>
+                <a href="contributing.html">Contributing</a>
+            </nav>
+            <div class="nav-right">
+                <a class="btn-github desktop" href="https://github.com/Conversation-analyzer" target="_blank">
+                    <i class="fa-brands fa-github"></i> Star on GitHub
+                </a>
+                <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <span class="badge">Features</span>
+            <h1>Every capability,<br><span>detailed and explained.</span></h1>
+            <p>AI Conversation Analyzer packs a comprehensive suite of analysis tools into a single, privacy-first, browser-based application. Explore each feature below.</p>
+        </div>
+    </section>
+
+    <!-- Feature 1: Conversation Visualization -->
+    <section class="section" id="conversation-visualization">
+        <div class="container">
+            <div class="content-grid reveal">
+                <div class="content-block">
+                    <span class="section-label">01</span>
+                    <h2>Conversation Visualization</h2>
+                    <p>Group raw messages into meaningful conversation turns with expandable details. Each turn captures the full exchange between user and assistant, including role badges, timestamps, and content previews. Expand any turn to see the complete message body, nested tool calls, and embedded reasoning traces.</p>
+                    <div class="divider"></div>
+                    <h4>What's Inside</h4>
+                    <p>Messages are automatically grouped by turn boundaries. Each turn displays the assistant's response alongside the user's prompt. Expandable sections reveal the full content, including markdown-rendered text, code blocks with syntax highlighting, and inline tool call summaries.</p>
+                    <div class="divider"></div>
+                    <h4>Future Plans</h4>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+                        <span class="tag tag-green">Side-by-side diff view</span>
+                        <span class="tag tag-blue">Message bookmarks</span>
+                        <span class="tag tag-amber">Search within turns</span>
+                        <span class="tag tag-purple">Export selected turns</span>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <div class="feature-illustration">
+                        <i class="fa-solid fa-comments" style="font-size: 4rem; color: var(--blue); opacity: 0.15;"></i>
+                        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">Conversation turn visualization with expandable details</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 2: Timeline Analysis -->
+    <section class="section section-alt" id="timeline-analysis">
+        <div class="container">
+            <div class="content-grid reveal">
+                <div class="content-block">
+                    <div class="feature-illustration">
+                        <i class="fa-solid fa-timeline" style="font-size: 4rem; color: var(--green); opacity: 0.15;"></i>
+                        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">Chronological event stream with filterable chips</p>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <span class="section-label">02</span>
+                    <h2>Timeline Analysis</h2>
+                    <p>See your entire conversation as a chronological event stream. Every message, tool call, and reasoning step is placed on a timeline with precise timestamps and relative offsets. Filterable chips let you isolate specific event types — messages, tool calls, reasoning blocks, or errors — for focused analysis.</p>
+                    <div class="divider"></div>
+                    <h4>What's Inside</h4>
+                    <p>The timeline renders events in strict chronological order. Each event shows its type icon, duration where applicable, and a compact summary. Click any event to jump to its full details. Filter chips at the top let you toggle visibility of each event category independently.</p>
+                    <div class="divider"></div>
+                    <h4>Future Plans</h4>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+                        <span class="tag tag-green">Zoom and pan controls</span>
+                        <span class="tag tag-blue">Parallel event lanes</span>
+                        <span class="tag tag-amber">Time gap highlighting</span>
+                        <span class="tag tag-purple">Timeline bookmarks</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 3: Token Metrics -->
+    <section class="section" id="token-metrics">
+        <div class="container">
+            <div class="content-grid reveal">
+                <div class="content-block">
+                    <span class="section-label">03</span>
+                    <h2>Token Metrics</h2>
+                    <p>Get a complete breakdown of token usage across every dimension that matters. Input tokens, output tokens, reasoning tokens, cache reads, and cache writes are all tracked separately with interactive bar charts and cumulative totals. Understand exactly how your token budget is being spent.</p>
+                    <div class="divider"></div>
+                    <h4>What's Inside</h4>
+                    <p>Token charts show per-turn and cumulative usage across five categories. A stacked bar visualization makes it easy to see the ratio of input to output tokens. Cache hit rates are highlighted so you can identify opportunities to reduce costs. Hover any bar for exact counts and percentages.</p>
+                    <div class="divider"></div>
+                    <h4>Future Plans</h4>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+                        <span class="tag tag-green">Token budget alerts</span>
+                        <span class="tag tag-blue">Per-model comparisons</span>
+                        <span class="tag tag-amber">Token usage forecasts</span>
+                        <span class="tag tag-purple">Export token reports</span>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <div class="feature-illustration">
+                        <i class="fa-solid fa-chart-bar" style="font-size: 4rem; color: var(--amber); opacity: 0.15;"></i>
+                        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">Interactive token breakdown charts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 4: Tool Call Inspection -->
+    <section class="section section-alt" id="tool-call-inspection">
+        <div class="container">
+            <div class="content-grid reveal">
+                <div class="content-block">
+                    <div class="feature-illustration">
+                        <i class="fa-solid fa-wrench" style="font-size: 4rem; color: var(--purple); opacity: 0.15;"></i>
+                        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">Duration, input/output, and status for every tool call</p>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <span class="section-label">04</span>
+                    <h2>Tool Call Inspection</h2>
+                    <p>Every tool call the model makes is captured with full fidelity. See the tool name, input parameters, output payload, execution duration, and success or error status. Tool calls are displayed inline within conversation turns so you can see exactly what the model requested and what it received back.</p>
+                    <div class="divider"></div>
+                    <h4>What's Inside</h4>
+                    <p>Each tool call card shows the function name, a compact summary of the input arguments, the full JSON output, and a color-coded status badge. Duration is displayed prominently so you can spot slow calls at a glance. Failed calls are highlighted with error details extracted from the response.</p>
+                    <div class="divider"></div>
+                    <h4>Future Plans</h4>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+                        <span class="tag tag-green">Tool call frequency charts</span>
+                        <span class="tag tag-blue">Input/output diff view</span>
+                        <span class="tag tag-amber">Dependency graph</span>
+                        <span class="tag tag-purple">Slow call alerts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 5: Reasoning Breakdown -->
+    <section class="section" id="reasoning-breakdown">
+        <div class="container">
+            <div class="content-grid reveal">
+                <div class="content-block">
+                    <span class="section-label">05</span>
+                    <h2>Reasoning Breakdown</h2>
+                    <p>Peek inside the model's thinking process. When reasoning tokens are present in the API response, the analyzer extracts and displays them in a dedicated reasoning panel. Follow the chain of thought from initial analysis through intermediate steps to the final conclusion, all rendered in a readable format.</p>
+                    <div class="divider"></div>
+                    <h4>What's Inside</h4>
+                    <p>Reasoning blocks are extracted from the model's extended thinking output and displayed in a collapsible panel. Each reasoning step is labeled with its position in the sequence. Token counts are shown for each step so you can see where the model spends the most thinking budget. Reasoning is also correlated with the final output to show the path from thought to response.</p>
+                    <div class="divider"></div>
+                    <h4>Future Plans</h4>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+                        <span class="tag tag-green">Reasoning tree visualization</span>
+                        <span class="tag tag-blue">Step-by-step playback</span>
+                        <span class="tag tag-amber">Reasoning vs. output correlation</span>
+                        <span class="tag tag-purple">Cross-model reasoning comparison</span>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <div class="feature-illustration">
+                        <i class="fa-solid fa-brain" style="font-size: 4rem; color: var(--blue); opacity: 0.15;"></i>
+                        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">Model reasoning chain visualization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 6: Session Explorer -->
+    <section class="section section-alt" id="session-explorer">
+        <div class="container">
+            <div class="content-grid reveal">
+                <div class="content-block">
+                    <div class="feature-illustration">
+                        <i class="fa-solid fa-table" style="font-size: 4rem; color: var(--green); opacity: 0.15;"></i>
+                        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">AG Grid sortable and filterable tables</p>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <span class="section-label">06</span>
+                    <h2>Session Explorer</h2>
+                    <p>Browse all your sessions in powerful AG Grid tables with full sorting, filtering, and column customization. Every session is summarized with key metrics — total tokens, turn count, duration, tool calls, and estimated cost. Click any row to dive into the full session analysis.</p>
+                    <div class="divider"></div>
+                    <h4>What's Inside</h4>
+                    <p>The session explorer renders a data grid with sortable columns for every metric. Filter by model name, date range, token count, or cost threshold. Column visibility is customizable so you can focus on the metrics that matter most. Quick-action buttons let you open, compare, or export sessions directly from the grid.</p>
+                    <div class="divider"></div>
+                    <h4>Future Plans</h4>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+                        <span class="tag tag-green">Session grouping and folders</span>
+                        <span class="tag tag-blue">Saved filter presets</span>
+                        <span class="tag tag-amber">Bulk export</span>
+                        <span class="tag tag-purple">Session comparison mode</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 7: Performance Insights -->
+    <section class="section" id="performance-insights">
+        <div class="container">
+            <div class="content-grid reveal">
+                <div class="content-block">
+                    <span class="section-label">07</span>
+                    <h2>Performance Insights</h2>
+                    <p>Measure and visualize the performance characteristics of every conversation. Latency is broken down per turn with p50 and p95 percentile calculations. Context accumulation curves show how the conversation grows over time. Acceleration detection identifies turns where the model sped up or slowed down significantly.</p>
+                    <div class="divider"></div>
+                    <h4>What's Inside</h4>
+                    <p>Performance charts plot response latency across all turns with percentile overlays. A context accumulation chart shows token count growth per turn, helping you understand when context pressure begins to affect performance. Anomaly markers highlight statistically significant latency spikes for quick investigation.</p>
+                    <div class="divider"></div>
+                    <h4>Future Plans</h4>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+                        <span class="tag tag-green">Throughput metrics</span>
+                        <span class="tag tag-blue">Cross-session benchmarks</span>
+                        <span class="tag tag-amber">Performance regression detection</span>
+                        <span class="tag tag-purple">Token-per-second tracking</span>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <div class="feature-illustration">
+                        <i class="fa-solid fa-gauge-high" style="font-size: 4rem; color: var(--amber); opacity: 0.15;"></i>
+                        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">Latency percentiles and context curves</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 8: Cost Analysis -->
+    <section class="section section-alt" id="cost-analysis">
+        <div class="container">
+            <div class="content-grid reveal">
+                <div class="content-block">
+                    <div class="feature-illustration">
+                        <i class="fa-solid fa-coins" style="font-size: 4rem; color: var(--green); opacity: 0.15;"></i>
+                        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">Track API costs per session, turn, and tool call</p>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <span class="section-label">08</span>
+                    <h2>Cost Analysis</h2>
+                    <p>Track exactly where your API budget goes. Costs are calculated per session, per turn, and per individual tool call using current pricing tables for supported models. See cumulative cost curves, identify the most expensive turns, and understand which tool calls consume the largest share of your budget.</p>
+                    <div class="divider"></div>
+                    <h4>What's Inside</h4>
+                    <p>Cost breakdowns are computed from token counts and model-specific pricing. A cumulative cost chart shows spending over the course of the session. Per-turn cost tables rank turns by expense. Tool call cost summaries highlight the most expensive operations. All costs are displayed in USD with configurable currency display.</p>
+                    <div class="divider"></div>
+                    <h4>Future Plans</h4>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+                        <span class="tag tag-green">Budget limits and alerts</span>
+                        <span class="tag tag-blue">Cost projection per session</span>
+                        <span class="tag tag-amber">Multi-currency support</span>
+                        <span class="tag tag-purple">Cost optimization suggestions</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 9: Universal Conversation Parser -->
+    <section class="section" id="universal-parser">
+        <div class="container">
+            <div class="content-grid reveal">
+                <div class="content-block">
+                    <span class="section-label">09</span>
+                    <h2>Universal Conversation Parser</h2>
+                    <p>Every AI platform exports conversations in a different format. The universal parser normalizes all of them into a single, well-defined ConversationSpec model. This normalized representation powers every visualization and analysis tool in the application, regardless of which platform produced the original data.</p>
+                    <div class="divider"></div>
+                    <h4>What's Inside</h4>
+                    <p>The parser implements a schema-driven approach with platform-specific adapters. Each adapter handles format detection, field mapping, and data normalization. The resulting ConversationSpec includes typed message objects, tool call records, reasoning traces, usage metadata, and session-level statistics — all in a consistent, queryable structure.</p>
+                    <div class="divider"></div>
+                    <h4>Future Plans</h4>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+                        <span class="tag tag-green">Auto-format detection</span>
+                        <span class="tag tag-blue">Custom schema definitions</span>
+                        <span class="tag tag-amber">Streaming parser support</span>
+                        <span class="tag tag-purple">Parser plugin SDK</span>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <div class="feature-illustration">
+                        <i class="fa-solid fa-diagram-project" style="font-size: 4rem; color: var(--purple); opacity: 0.15;"></i>
+                        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">Normalized ConversationSpec model</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 10: Multi-Agent Support -->
+    <section class="section section-alt" id="multi-agent">
+        <div class="container">
+            <div class="content-grid reveal">
+                <div class="content-block">
+                    <div class="feature-illustration">
+                        <i class="fa-solid fa-robot" style="font-size: 4rem; color: var(--blue); opacity: 0.15;"></i>
+                        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">Compare different agents and models side by side</p>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <span class="section-label">10</span>
+                    <h2>Multi-Agent Support</h2>
+                    <p>Compare how different agents and models approach the same task. Load sessions from multiple agents side by side and analyze differences in token usage, reasoning depth, tool call patterns, latency, and cost. Identify which agent performs best for specific task types and understand behavioral differences across models.</p>
+                    <div class="divider"></div>
+                    <h4>What's Inside</h4>
+                    <p>The comparison view normalizes metrics across agents so you can make apples-to-apples comparisons. Overlaid charts show token distribution, latency profiles, and cost curves for each agent. A summary table ranks agents by key performance indicators. Agent metadata — model name, provider, version — is displayed for reference.</p>
+                    <div class="divider"></div>
+                    <h4>Future Plans</h4>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+                        <span class="tag tag-green">Agent benchmark suite</span>
+                        <span class="tag tag-blue">Behavioral fingerprinting</span>
+                        <span class="tag tag-amber">Task-type classification</span>
+                        <span class="tag tag-purple">A/B test framework</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 11: Extensible Architecture -->
+    <section class="section" id="extensible-architecture">
+        <div class="container">
+            <div class="content-grid reveal">
+                <div class="content-block">
+                    <span class="section-label">11</span>
+                    <h2>Extensible Architecture</h2>
+                    <p>The entire application is built on a plugin-ready connector system. Adding support for a new AI platform requires only three components: a connection handler, a datasource adapter, and a parser. The abstract connector interface ensures that every new integration plugs directly into the existing visualization and analysis pipeline.</p>
+                    <div class="divider"></div>
+                    <h4>What's Inside</h4>
+                    <p>The architecture separates concerns into connection (how to reach the data), datasource (how to read the data), and parser (how to normalize the data) layers. Each layer has a well-defined interface. Existing connectors for OpenCode, Claude, ChatGPT, and others serve as reference implementations. The plugin system auto-discovers connectors at runtime.</p>
+                    <div class="divider"></div>
+                    <h4>Future Plans</h4>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+                        <span class="tag tag-green">Hot-pluggable connectors</span>
+                        <span class="tag tag-blue">Connector marketplace</span>
+                        <span class="tag tag-amber">Webhook-based live ingestion</span>
+                        <span class="tag tag-purple">Custom visualization plugins</span>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <div class="feature-illustration">
+                        <i class="fa-solid fa-plug" style="font-size: 4rem; color: var(--amber); opacity: 0.15;"></i>
+                        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">Plugin-ready connector system</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 12: Privacy First -->
+    <section class="section section-alt" id="privacy-first">
+        <div class="container">
+            <div class="content-grid reveal">
+                <div class="content-block">
+                    <div class="feature-illustration">
+                        <i class="fa-solid fa-shield-halved" style="font-size: 4rem; color: var(--green); opacity: 0.15;"></i>
+                        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">100% browser-based, no data leaves your machine</p>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <span class="section-label">12</span>
+                    <h2>Privacy First</h2>
+                    <p>Every analysis runs entirely in your browser. Your conversation data is never sent to any server, analytics endpoint, or third-party service. There are no telemetry calls, no cloud dependencies, and no account requirements. Your AI conversations — which may contain sensitive code, business logic, or personal information — stay on your machine, period.</p>
+                    <div class="divider"></div>
+                    <h4>What's Inside</h4>
+                    <p>The application is a static site with zero server-side components. All data processing happens in JavaScript within the browser sandbox. No cookies are set, no localStorage is used without explicit consent, and no external requests are made beyond loading the initial static assets. The entire tool works offline once loaded.</p>
+                    <div class="divider"></div>
+                    <h4>Future Plans</h4>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+                        <span class="tag tag-green">Content Security Policy headers</span>
+                        <span class="tag tag-blue">Subresource integrity checks</span>
+                        <span class="tag tag-amber">Zero external font dependencies</span>
+                        <span class="tag tag-purple">SOC 2 compliance documentation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-banner reveal">
+                <h2>See all these features in action?</h2>
+                <p>Read the documentation, try the analyzer, and start exploring your AI conversations today.</p>
+                <div class="cta-buttons">
+                    <a class="btn btn-primary btn-lg" href="docs.html">
+                        <i class="fa-solid fa-book"></i> Read the Docs
+                    </a>
+                    <a class="btn btn-secondary btn-lg" href="https://github.com/Conversation-analyzer" target="_blank">
+                        <i class="fa-brands fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="nav-brand">
+                        <span class="nav-brand-dot"></span>
+                        AI Conversation Analyzer
+                    </div>
+                    <p>Debug, inspect, and visualize AI agent conversations. Open source, privacy first, built for developers.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <a href="features.html">Features</a>
+                    <a href="docs.html">Documentation</a>
+                    <a href="roadmap.html">Roadmap</a>
+                    <a href="changelog.html">Changelog</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Community</h4>
+                    <a href="community.html">Community</a>
+                    <a href="contributing.html">Contributing</a>
+                    <a href="https://github.com/Conversation-analyzer/issues" target="_blank">Report a Bug</a>
+                    <a href="https://github.com/Conversation-analyzer" target="_blank">GitHub</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <a href="https://github.com/Conversation-analyzer/blob/main/LICENSE" target="_blank">MIT License</a>
+                    <a href="about.html">About</a>
+                    <a href="mailto:chnrndr3@email.com">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 AI Conversation Analyzer. MIT Licensed.</span>
+                <div class="footer-socials">
+                    <a href="https://github.com/Conversation-analyzer" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="mailto:chnrndr3@email.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

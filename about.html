@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — AI Conversation Analyzer</title>
+    <meta name="description" content="Learn about AI Conversation Analyzer — our mission, values, and the team behind the open source AI conversation debugging tool.">
+    <meta name="keywords" content="AI, conversation, analyzer, about, mission, open source, privacy, developer tools">
+    <meta property="og:title" content="About — AI Conversation Analyzer">
+    <meta property="og:description" content="Learn about AI Conversation Analyzer — our mission, values, and the team.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Effects -->
+    <div class="bg-effects">
+        <div class="bg-grid"></div>
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-brand">
+                <span class="nav-brand-dot"></span>
+                AI Conversation Analyzer
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="features.html">Features</a>
+                <a href="docs.html">Docs</a>
+                <a href="community.html">Community</a>
+                <a href="roadmap.html">Roadmap</a>
+                <a href="contributing.html">Contributing</a>
+            </nav>
+            <div class="nav-right">
+                <a class="btn-github desktop" href="https://github.com/Conversation-analyzer" target="_blank">
+                    <i class="fa-brands fa-github"></i> Star on GitHub
+                </a>
+                <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <span class="badge">About &bull; Open Source &bull; MIT Licensed</span>
+            <h1>About the Project</h1>
+            <p>Why AI Conversation Analyzer exists, what we stand for, and who's building it.</p>
+        </div>
+    </section>
+
+    <!-- About Hero -->
+    <section class="section">
+        <div class="container">
+            <div class="about-hero reveal">
+                <h2>We believe developers deserve better tools to understand AI conversations.</h2>
+                <p>AI agents are becoming a core part of software development workflows. They write code, run tools, reason through problems, and produce outputs that developers need to trust and debug. But most teams are still staring at raw JSON dumps, trying to make sense of token counts, tool call sequences, and reasoning traces by hand.</p>
+                <p>AI Conversation Analyzer was built to change that. It takes the raw output from AI agent sessions and transforms it into rich, interactive dashboards — giving developers the visibility they need to understand exactly what happened, why it happened, and how to improve it.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Our Mission</span>
+                <h2>Make every AI conversation transparent.</h2>
+                <p>We're building the definitive tool for inspecting, debugging, and understanding AI agent conversations — and we're doing it as open source.</p>
+            </div>
+            <div class="grid-3 reveal">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon blue">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                        <h3>Visibility</h3>
+                    </div>
+                    <p>Every reasoning step, tool call, token usage spike, and latency anomaly should be visible to the developer. No black boxes, no guesswork.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon green">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3>Privacy</h3>
+                    </div>
+                    <p>AI conversations contain sensitive code, business logic, and personal information. That data should never leave your machine. Analysis happens 100% in the browser.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon amber">
+                            <i class="fa-solid fa-plug"></i>
+                        </div>
+                        <h3>Extensibility</h3>
+                    </div>
+                    <p>AI platforms evolve fast. The analyzer needs to keep up. A pluggable connector architecture means new platforms can be supported without rewriting the core.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="section" id="values">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Our Values</span>
+                <h2>What guides us.</h2>
+                <p>Six principles that shape every decision we make about the project.</p>
+            </div>
+            <div class="about-values reveal">
+                <div class="comparison-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    <div class="comparison-card">
+                        <span class="comparison-icon">📖</span>
+                        <h4>Transparency</h4>
+                        <p>Every part of the analyzer is open for inspection. Our code, our roadmap, our decisions — all public. We believe transparency builds trust, and trust builds community.</p>
+                    </div>
+                    <div class="comparison-card">
+                        <span class="comparison-icon">🔒</span>
+                        <h4>Privacy</h4>
+                        <p>Your conversations are yours. No telemetry, no analytics, no cloud processing. The analyzer runs entirely in your browser and makes zero network requests beyond loading its own static assets.</p>
+                    </div>
+                    <div class="comparison-card">
+                        <span class="comparison-icon">📖</span>
+                        <h4>Open Source</h4>
+                        <p>MIT licensed, forkable, and community-driven. We believe the best developer tools are built in the open, where anyone can contribute, audit, and improve them.</p>
+                    </div>
+                    <div class="comparison-card">
+                        <span class="comparison-icon">🛠️</span>
+                        <h4>Developer Experience</h4>
+                        <p>Zero build steps, zero configuration, zero friction. Drop the files on any static server and start analyzing. The tool should get out of your way and let you focus on understanding your AI conversations.</p>
+                    </div>
+                    <div class="comparison-card">
+                        <span class="comparison-icon">👥</span>
+                        <h4>Community</h4>
+                        <p>We don't just accept contributions — we actively seek them out. Every issue, every pull request, every discussion shapes the direction of the project. The community is the project.</p>
+                    </div>
+                    <div class="comparison-card">
+                        <span class="comparison-icon">🔌</span>
+                        <h4>Extensibility</h4>
+                        <p>AI platforms come and go. The analyzer's pluggable connector system ensures it can adapt to any format, any platform, any workflow — without core rewrites or vendor dependencies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team / Maintainers -->
+    <section class="section section-alt" id="team">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Team</span>
+                <h2>Maintainers</h2>
+                <p>The people building and maintaining AI Conversation Analyzer.</p>
+            </div>
+            <div class="grid-3 reveal">
+                <div class="card" style="text-align:center">
+                    <div style="width:64px;height:64px;border-radius:50%;background:var(--surface-3);border:2px solid var(--primary-border);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:1.6rem">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <h3>Placeholder</h3>
+                    <p style="margin-top:4px">Project Lead &amp; Maintainer</p>
+                    <div style="margin-top:14px;display:flex;gap:10px;justify-content:center">
+                        <a class="btn btn-sm btn-secondary" href="https://github.com/Conversation-analyzer" target="_blank"><i class="fa-brands fa-github"></i></a>
+                        <a class="btn btn-sm btn-secondary" href="mailto:chnrndr3@email.com"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="card" style="text-align:center">
+                    <div style="width:64px;height:64px;border-radius:50%;background:var(--surface-3);border:2px solid var(--border);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:1.6rem">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+                    <h3>Become a Maintainer</h3>
+                    <p style="margin-top:4px">Help maintain the project and shape its direction</p>
+                    <div style="margin-top:14px">
+                        <a class="btn btn-sm btn-primary" href="contributing.html"><i class="fa-solid fa-arrow-right"></i> Learn More</a>
+                    </div>
+                </div>
+                <div class="card" style="text-align:center">
+                    <div style="width:64px;height:64px;border-radius:50%;background:var(--surface-3);border:2px solid var(--border);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:1.6rem">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h3>Contributors</h3>
+                    <p style="margin-top:4px">Everyone who has filed issues, submitted PRs, or improved docs</p>
+                    <div style="margin-top:14px">
+                        <a class="btn btn-sm btn-secondary" href="https://github.com/Conversation-analyzer/graphs/contributors" target="_blank"><i class="fa-solid fa-arrow-right"></i> View All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-banner reveal">
+                <h2>Want to be part of this?</h2>
+                <p>Join the community, contribute code, or just star the repo to show your support.</p>
+                <div class="cta-buttons">
+                    <a class="btn btn-primary btn-lg" href="https://github.com/Conversation-analyzer" target="_blank">
+                        <i class="fa-brands fa-github"></i> Star on GitHub
+                    </a>
+                    <a class="btn btn-secondary btn-lg" href="contributing.html">
+                        <i class="fa-solid fa-code"></i> Contributing Guide
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="nav-brand">
+                        <span class="nav-brand-dot"></span>
+                        AI Conversation Analyzer
+                    </div>
+                    <p>Debug, inspect, and visualize AI agent conversations. Open source, privacy first, built for developers.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <a href="features.html">Features</a>
+                    <a href="docs.html">Documentation</a>
+                    <a href="roadmap.html">Roadmap</a>
+                    <a href="changelog.html">Changelog</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Community</h4>
+                    <a href="community.html">Community</a>
+                    <a href="contributing.html">Contributing</a>
+                    <a href="https://github.com/Conversation-analyzer/issues" target="_blank">Report a Bug</a>
+                    <a href="https://github.com/Conversation-analyzer" target="_blank">GitHub</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <a href="https://github.com/Conversation-analyzer/blob/main/LICENSE" target="_blank">MIT License</a>
+                    <a href="about.html">About</a>
+                    <a href="mailto:chnrndr3@email.com">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 AI Conversation Analyzer. MIT Licensed.</span>
+                <div class="footer-socials">
+                    <a href="https://github.com/Conversation-analyzer" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="mailto:chnrndr3@email.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

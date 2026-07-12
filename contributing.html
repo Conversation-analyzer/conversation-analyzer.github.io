@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contributing — AI Conversation Analyzer</title>
+    <meta name="description" content="Learn how to contribute to AI Conversation Analyzer. Quick start guide, ways to contribute, good first issues, development setup, and pull request process.">
+    <meta name="keywords" content="AI, conversation, analyzer, contribute, open source, pull request, development, setup">
+    <meta property="og:title" content="Contributing — AI Conversation Analyzer">
+    <meta property="og:description" content="Learn how to contribute to AI Conversation Analyzer. Quick start guide, ways to contribute, good first issues, development setup, and pull request process.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="bg-effects">
+        <div class="bg-grid"></div>
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+    </div>
+
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-brand">
+                <span class="nav-brand-dot"></span>
+                AI Conversation Analyzer
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="features.html">Features</a>
+                <a href="docs.html">Docs</a>
+                <a href="community.html">Community</a>
+                <a href="roadmap.html">Roadmap</a>
+                <a href="contributing.html" class="active">Contributing</a>
+            </nav>
+            <div class="nav-right">
+                <a class="btn-github desktop" href="https://github.com/Conversation-analyzer" target="_blank">
+                    <i class="fa-brands fa-github"></i> Star on GitHub
+                </a>
+                <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <span class="badge">Open Source &bull; MIT Licensed &bull; Community Driven</span>
+            <h1>Contributing</h1>
+            <p>We welcome contributions of all shapes and sizes. Whether you're fixing a typo, building a new connector, or improving the parser — here's how to get started.</p>
+        </div>
+    </section>
+
+    <!-- Quick Start -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Get Started</span>
+                <h2>Quick Start</h2>
+                <p>From zero to hacking in under a minute. No build step, no complex toolchain.</p>
+            </div>
+            <div class="steps reveal">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Fork</h4>
+                    <p>Fork the repository on GitHub to your own account.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Clone</h4>
+                    <p>Clone your fork locally with <span class="text-mono text-sm">git clone</span>.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Serve</h4>
+                    <p>Open <span class="text-mono text-sm">index.html</span> or serve with any static server.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Open</h4>
+                    <p>Open in your browser and verify everything works.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h4>Start Hacking</h4>
+                    <p>Edit HTML, CSS, or JS and refresh to see changes instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ways to Contribute -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Ways to Contribute</span>
+                <h2>Everyone Can Help</h2>
+                <p>You don't need to be an expert to make a meaningful impact. Here are many ways to contribute.</p>
+            </div>
+            <div class="grid-3 reveal">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon red">
+                            <i class="fa-solid fa-bug"></i>
+                        </div>
+                        <h3>Report Bugs</h3>
+                    </div>
+                    <p>Found something broken? Open an issue with clear reproduction steps. Include screenshots and environment details to help us fix it faster.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon amber">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <h3>Suggest Features</h3>
+                    </div>
+                    <p>Have an idea that would make the analyzer better? Share it in GitHub Discussions. We love hearing how you want to use the tool.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon blue">
+                            <i class="fa-solid fa-plug"></i>
+                        </div>
+                        <h3>Build Connectors</h3>
+                    </div>
+                    <p>Create connectors for new AI platforms. The abstract connector system makes it easy to add support for any chat export format.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon purple">
+                            <i class="fa-solid fa-arrows-spin"></i>
+                        </div>
+                        <h3>Improve Parsers</h3>
+                    </div>
+                    <p>Enhance the universal parser to handle edge cases, new formats, or richer metadata. Every improvement unlocks new insights.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon green">
+                            <i class="fa-solid fa-chart-bar"></i>
+                        </div>
+                        <h3>Add Charts</h3>
+                    </div>
+                    <p>Design new visualizations for token usage, latency, cost breakdowns, or agent comparison. Charts make data tell a story.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon amber">
+                            <i class="fa-solid fa-book"></i>
+                        </div>
+                        <h3>Improve Docs</h3>
+                    </div>
+                    <p>Fix typos, write examples, add guides, or translate documentation. Great documentation is just as valuable as great code.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Good First Issues -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Good First Issues</span>
+                <h2>Start Here</h2>
+                <p>These curated issues are perfect for new contributors. Each one is self-contained and well-scoped.</p>
+            </div>
+            <div class="grid-3 reveal">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon green">
+                            <i class="fa-solid fa-tag"></i>
+                        </div>
+                        <h3>Add Tag Badges</h3>
+                    </div>
+                    <p>Implement role-based tag badges for conversation turns (user, assistant, tool). Good intro to the rendering pipeline.</p>
+                    <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+                        <span class="tag tag-green">good first issue</span>
+                        <span class="tag tag-blue">UI</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon purple">
+                            <i class="fa-solid fa-magnifying-glass-chart"></i>
+                        </div>
+                        <h3>Filter by Token Range</h3>
+                    </div>
+                    <p>Add a slider to filter conversation turns by token count. Great practice with state management and event handling.</p>
+                    <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+                        <span class="tag tag-green">good first issue</span>
+                        <span class="tag tag-blue">UI</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon amber">
+                            <i class="fa-solid fa-file-export"></i>
+                        </div>
+                        <h3>CSV Export</h3>
+                    </div>
+                    <p>Implement export-to-CSV functionality for the session table. Good exercise in data transformation and file I/O.</p>
+                    <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+                        <span class="tag tag-green">good first issue</span>
+                        <span class="tag tag-blue">core</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon blue">
+                            <i class="fa-solid fa-sun"></i>
+                        </div>
+                        <h3>Light Theme Toggle</h3>
+                    </div>
+                    <p>Add a theme switcher between dark and light mode. Learn how the CSS variable system works end to end.</p>
+                    <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+                        <span class="tag tag-green">good first issue</span>
+                        <span class="tag tag-blue">CSS</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon green">
+                            <i class="fa-solid fa-search"></i>
+                        </div>
+                        <h3>Search Conversations</h3>
+                    </div>
+                    <p>Build a simple text search across conversation messages with highlight matching. Straightforward feature with high user value.</p>
+                    <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+                        <span class="tag tag-green">good first issue</span>
+                        <span class="tag tag-blue">JS</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon purple">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <h3>Timestamp Tooltips</h3>
+                    </div>
+                    <p>Add hover tooltips showing absolute timestamps on the timeline. Simple DOM manipulation with no backend needed.</p>
+                    <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+                        <span class="tag tag-green">good first issue</span>
+                        <span class="tag tag-blue">UI</span>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:48px" class="reveal">
+                <a class="btn btn-primary btn-lg" href="https://github.com/Conversation-analyzer/issues?q=label%3A%22good+first+issue%22" target="_blank">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> View All Good First Issues
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Development Setup -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Setup</span>
+                <h2>Development Setup</h2>
+                <p>AI Conversation Analyzer has zero build dependencies. Here's everything you need to run it locally.</p>
+            </div>
+            <div class="grid-2 reveal">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon green">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <h3>Prerequisites</h3>
+                    </div>
+                    <ul style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--text-secondary)">
+                        <li><i class="fa-brands fa-github" style="color:var(--primary);width:20px"></i> A GitHub account</li>
+                        <li><i class="fa-brands fa-git-alt" style="color:var(--primary);width:20px"></i> Git installed locally</li>
+                        <li><i class="fa-solid fa-code" style="color:var(--primary);width:20px"></i> A code editor (VS Code recommended)</li>
+                        <li><i class="fa-solid fa-globe" style="color:var(--primary);width:20px"></i> A modern browser (Chrome, Firefox, Edge)</li>
+                        <li><i class="fa-solid fa-terminal" style="color:var(--primary);width:20px"></i> Basic familiarity with HTML, CSS, and JavaScript</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon blue">
+                            <i class="fa-solid fa-terminal"></i>
+                        </div>
+                        <h3>Setup Commands</h3>
+                    </div>
+                    <pre style="background:var(--bg);padding:16px;border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:13px;color:var(--text);line-height:1.8;overflow-x:auto;border:1px solid var(--border-light)"><span style="color:var(--muted)"># Clone your fork</span>
+git clone https://github.com/<span style="color:var(--green)">YOUR_USERNAME</span>/conversation-analyzer.github.io.git
+cd conversation-analyzer.github.io
+
+<span style="color:var(--muted)"># Serve locally (any of these work)</span>
+python -m http.server 8000
+<span style="color:var(--muted)"># or</span>
+npx serve .
+<span style="color:var(--muted)"># or</span>
+php -S localhost:8000</pre>
+                </div>
+            </div>
+            <div class="reveal" style="margin-top:32px">
+                <div class="card" style="text-align:center;max-width:600px;margin:0 auto">
+                    <div class="card-header" style="justify-content:center">
+                        <div class="card-icon amber">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <h3>Project Structure</h3>
+                    </div>
+                    <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-secondary);line-height:2;text-align:left;display:inline-block">
+                        <span style="color:var(--primary)">index.html</span>          — Landing page<br>
+                        <span style="color:var(--primary)">features.html</span>       — Features overview<br>
+                        <span style="color:var(--primary)">docs.html</span>           — Documentation<br>
+                        <span style="color:var(--primary)">community.html</span>      — Community page<br>
+                        <span style="color:var(--primary)">roadmap.html</span>        — Roadmap<br>
+                        <span style="color:var(--primary)">contributing.html</span>   — This page<br>
+                        <span style="color:var(--green)">style.css</span>             — All styles<br>
+                        <span style="color:var(--green)">script.js</span>             — All JavaScript
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pull Request Process -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">PR Process</span>
+                <h2>Pull Request Process</h2>
+                <p>A clear, repeatable process keeps contributions smooth for everyone.</p>
+            </div>
+            <div class="timeline reveal" style="max-width:700px;margin:0 auto">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Step 1</div>
+                    <h4>Fork &amp; Branch</h4>
+                    <p>Fork the repository and create a feature branch from <span class="text-mono text-sm">main</span>. Use a descriptive name like <span class="text-mono text-sm">feat/csv-export</span> or <span class="text-mono text-sm">fix/tool-timeline</span>.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Step 2</div>
+                    <h4>Write Code</h4>
+                    <p>Make your changes following the existing code style. Keep commits small and focused. Write clear commit messages in the present tense.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Step 3</div>
+                    <h4>Test Locally</h4>
+                    <p>Open the HTML files in your browser and verify everything works. Check console for errors. Test across at least one other browser if possible.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Step 4</div>
+                    <h4>Commit &amp; Push</h4>
+                    <p>Commit your changes and push your branch to your fork. Follow the <a href="https://www.conventionalcommits.org/" target="_blank" style="color:var(--primary)">Conventional Commits</a> format if possible.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Step 5</div>
+                    <h4>Open a Pull Request</h4>
+                    <p>Open a PR from your fork to the main repository. Describe what your changes do, why they're needed, and how to test them. Maintainers will review and provide feedback.</p>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:56px" class="reveal">
+                <a class="btn btn-primary btn-lg" href="https://github.com/Conversation-analyzer/pulls" target="_blank">
+                    <i class="fa-brands fa-github"></i> Open a Pull Request
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guidelines -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Guidelines</span>
+                <h2>Contribution Guidelines</h2>
+                <p>A few simple principles to keep the project healthy and welcoming.</p>
+            </div>
+            <div class="grid-2 reveal">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon blue">
+                            <i class="fa-solid fa-message"></i>
+                        </div>
+                        <h3>Communicate First</h3>
+                    </div>
+                    <p>Before starting significant work, open an issue or start a discussion. This avoids duplicate effort and ensures your contribution aligns with the project direction.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon green">
+                            <i class="fa-solid fa-arrows-to-dot"></i>
+                        </div>
+                        <h3>Keep It Focused</h3>
+                    </div>
+                    <p>A single pull request should address one concern. If you have multiple unrelated changes, submit separate PRs. This makes reviews faster and more reliable.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon amber">
+                            <i class="fa-solid fa-file-pen"></i>
+                        </div>
+                        <h3>Update Docs</h3>
+                    </div>
+                    <p>If your changes introduce new behavior or modify existing functionality, update the relevant documentation. No contribution is complete without docs.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon purple">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <h3>Be Respectful</h3>
+                    </div>
+                    <p>All contributors must follow our Code of Conduct. Be constructive, patient, and welcoming. We're all here to learn and build something great together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-banner reveal">
+                <h2>Ready to make your first contribution?</h2>
+                <p>Every contributor started somewhere. Pick an issue, ask questions, and join the community.</p>
+                <div class="cta-buttons">
+                    <a class="btn btn-primary btn-lg" href="https://github.com/Conversation-analyzer" target="_blank">
+                        <i class="fa-brands fa-github"></i> View on GitHub
+                    </a>
+                    <a class="btn btn-secondary btn-lg" href="community.html">
+                        <i class="fa-solid fa-comments"></i> Join the Community
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="nav-brand">
+                        <span class="nav-brand-dot"></span>
+                        AI Conversation Analyzer
+                    </div>
+                    <p>Debug, inspect, and visualize AI agent conversations. Open source, privacy first, built for developers.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <a href="features.html">Features</a>
+                    <a href="docs.html">Documentation</a>
+                    <a href="roadmap.html">Roadmap</a>
+                    <a href="changelog.html">Changelog</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Community</h4>
+                    <a href="community.html">Community</a>
+                    <a href="contributing.html">Contributing</a>
+                    <a href="https://github.com/Conversation-analyzer/issues" target="_blank">Report a Bug</a>
+                    <a href="https://github.com/Conversation-analyzer" target="_blank">GitHub</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <a href="https://github.com/Conversation-analyzer/blob/main/LICENSE" target="_blank">MIT License</a>
+                    <a href="about.html">About</a>
+                    <a href="mailto:chnrndr3@email.com">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 AI Conversation Analyzer. MIT Licensed.</span>
+                <div class="footer-socials">
+                    <a href="https://github.com/Conversation-analyzer" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="mailto:chnrndr3@email.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,207 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversation Analyzer</title>
-    <meta name="description" content="Visualize AI conversations, reasoning, tools, timelines and token usage. Built by developers, for developers.">
+    <title>AI Conversation Analyzer — Understand Every AI Conversation</title>
+    <meta name="description" content="Debug, inspect, and visualize AI agent conversations. Analyze tokens, reasoning, tool calls, latency, and costs from OpenCode and other AI agents.">
+    <meta name="keywords" content="AI, conversation, analyzer, LLM, agent, debugging, visualization, tokens, reasoning, tools, OpenCode">
+    <meta property="og:title" content="AI Conversation Analyzer">
+    <meta property="og:description" content="Debug, inspect, and visualize AI agent conversations.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div id="mouse-glow"></div>
 
-    <div class="background">
-        <div class="gradient"></div>
-        <div class="grid"></div>
-        <div class="glow glow-1"></div>
-        <div class="glow glow-2"></div>
+    <!-- Background Effects -->
+    <div class="bg-effects">
+        <div class="bg-grid"></div>
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
     </div>
 
-    <section id="splash">
-        <div class="terminal">
-            <div class="terminal-header">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="terminal-body">
-                <div class="line logo">Conversation Analyzer</div>
-                <div class="line">Initializing...</div>
-                <div class="line" id="line1"></div>
-                <div class="line" id="line2"></div>
-                <div class="line" id="line3"></div>
-                <div class="space"></div>
-                <div class="line final" id="finalLine"></div>
-                <span class="cursor"></span>
-            </div>
-        </div>
-    </section>
-
-    <header id="navbar">
-        <div class="container nav">
-            <div class="brand"><span class="brand-dot"></span>Conversation Analyzer</div>
-            <nav id="primaryNav">
-                <a href="#features">Features</a>
-                <a href="#opensource">Open Source</a>
-                <a href="#community">Community</a>
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-brand">
+                <span class="nav-brand-dot"></span>
+                AI Conversation Analyzer
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="features.html">Features</a>
+                <a href="docs.html">Docs</a>
+                <a href="community.html">Community</a>
+                <a href="roadmap.html">Roadmap</a>
+                <a href="contributing.html">Contributing</a>
             </nav>
-            <a class="github-btn" href="https://github.com/Conversation-analyzer" target="_blank">GitHub</a>
-            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="nav-right">
+                <a class="btn-github desktop" href="https://github.com/Conversation-analyzer" target="_blank">
+                    <i class="fa-brands fa-github"></i> Star on GitHub
+                </a>
+                <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <main id="hero">
-        <div class="container hero">
-            <div class="hero-left">
-                <div class="badge">Offline First • Open Source</div>
-                <h1>
-                    Understand what your AI
-                    <span>actually did.</span>
-                </h1>
-                <p>
-                    Visualize conversations,
-                    reasoning,
-                    tools,
-                    timelines,
-                    token usage,
-                    and memory —
-                    all in one place.
-                </p>
-                <div class="buttons">
-                    <a class="primary" href="https://github.com/Conversation-analyzer" target="_blank">⭐ View on GitHub</a>
-                    <a class="secondary" href="#features">Explore</a>
-                </div>
-            </div>
-            <div class="hero-right">
-                <div class="preview">
-                    <div class="preview-header">Session Analysis</div>
-                    <div class="preview-body">
-                        <pre>Prompt Size 31,284 Tokens Diagnosis Who let bro cook?</pre>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll">
-            <span></span>
-            Scroll
-        </div>
-    </main>
-
-    <section id="features">
+    <!-- Hero Section -->
+    <section class="hero-section">
         <div class="container">
-            <div class="section-title">
-                <span>Features</span>
-                <h2>
-                    Everything you need to
-                    understand an AI conversation.
-                </h2>
-                <p>
-                    From reasoning and tool execution to token usage and
-                    conversation timelines — inspect every step visually.
-                </p>
-            </div>
-            <div class="feature-grid">
-                <article class="feature-card">
-                    <div class="feature-icon">🧠</div>
-                    <h3>Reasoning Timeline</h3>
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <span class="badge">Offline First &bull; Open Source &bull; MIT Licensed</span>
+                    <h1>
+                        Understand Every
+                        <span>AI Conversation.</span>
+                    </h1>
                     <p>
-                        Follow every reasoning step from prompt to
-                        final response.
+                        Debug, inspect, and visualize AI agent conversations.
+                        Analyze tokens, reasoning, tool calls, latency, and costs
+                        from OpenCode and other AI assistants — all in your browser.
                     </p>
-                </article>
-                <article class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Tool Execution</h3>
-                    <p>
-                        Visualize every MCP, API and tool call with
-                        execution time.
-                    </p>
-                </article>
-                <article class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Token Analysis</h3>
-                    <p>
-                        Prompt, completion, reasoning,
-                        memory and overhead.
-                    </p>
-                </article>
-                <article class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3>Search</h3>
-                    <p>
-                        Instantly search conversations,
-                        tools and messages.
-                    </p>
-                </article>
-                <article class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>Agent Analysis</h3>
-                    <p>
-                        Compare multiple agents
-                        and understand their behaviour.
-                    </p>
-                </article>
-                <article class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3>Session Compare</h3>
-                    <p>
-                        Compare two sessions side-by-side
-                        and identify differences instantly.
-                    </p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section id="demo">
-        <div class="container demo">
-            <div class="demo-left">
-                <span class="mini-title">
-                    Live Preview
-                </span>
-                <h2>
-                    Your conversations,
-                    finally visualized.
-                </h2>
-                <p>
-                    Stop scrolling through thousands of lines of JSON.
-                    See reasoning, timelines, tools and performance
-                    in one interactive dashboard.
-                </p>
-            </div>
-            <div class="demo-right">
-                <div class="dashboard">
-                    <div class="dashboard-header">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <h4>
-                            Conversation Analyzer
-                        </h4>
+                    <div class="hero-buttons">
+                        <a class="btn btn-primary btn-lg" href="docs.html">
+                            <i class="fa-solid fa-book"></i> View Documentation
+                        </a>
+                        <a class="btn btn-secondary btn-lg" href="https://github.com/Conversation-analyzer" target="_blank">
+                            <i class="fa-brands fa-github"></i> GitHub
+                        </a>
                     </div>
-                    <div class="dashboard-body">
-                        <div class="analysis-card">
-                            <small>
-                                Prompt Analysis
-                            </small>
-                            <h3 id="analysisTitle">
-                                Prompt Size
-                            </h3>
-                            <pre id="analysisText">31,284 
-                                Tokens 
-                                Diagnosis 
-                                Who let bro cook?
-                        </pre>
+                </div>
+                <div class="hero-visual">
+                    <div class="mock-dashboard">
+                        <div class="mock-titlebar">
+                            <span class="mock-dot r"></span>
+                            <span class="mock-dot y"></span>
+                            <span class="mock-dot g"></span>
+                            <span class="mock-titlebar-text">AI Conversation Analyzer</span>
+                        </div>
+                        <div class="mock-body">
+                            <div class="mock-stat-row">
+                                <div class="mock-stat">
+                                    <div class="mock-stat-value blue" data-count="31" data-suffix="k">0</div>
+                                    <div class="mock-stat-label">Tokens</div>
+                                </div>
+                                <div class="mock-stat">
+                                    <div class="mock-stat-value green" data-count="47" data-suffix="">0</div>
+                                    <div class="mock-stat-label">Tool Calls</div>
+                                </div>
+                                <div class="mock-stat">
+                                    <div class="mock-stat-value amber" data-count="12" data-suffix="">0</div>
+                                    <div class="mock-stat-label">Reasoning</div>
+                                </div>
+                            </div>
+                            <div class="mock-bars">
+                                <div class="mock-bar-row">
+                                    <span class="mock-bar-label">Input</span>
+                                    <div class="mock-bar-track"><div class="mock-bar-fill blue" data-width="72%"></div></div>
+                                </div>
+                                <div class="mock-bar-row">
+                                    <span class="mock-bar-label">Output</span>
+                                    <div class="mock-bar-track"><div class="mock-bar-fill green" data-width="45%"></div></div>
+                                </div>
+                                <div class="mock-bar-row">
+                                    <span class="mock-bar-label">Reasoning</span>
+                                    <div class="mock-bar-track"><div class="mock-bar-fill amber" data-width="28%"></div></div>
+                                </div>
+                                <div class="mock-bar-row">
+                                    <span class="mock-bar-label">Cache</span>
+                                    <div class="mock-bar-track"><div class="mock-bar-fill purple" data-width="58%"></div></div>
+                                </div>
+                            </div>
+                            <div class="mock-timeline">
+                                <div class="mock-timeline-title">Timeline</div>
+                                <div class="mock-timeline-items">
+                                    <div class="mock-timeline-item"><span class="mock-timeline-dot blue"></span> <span data-rotate></span></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -209,69 +129,294 @@
         </div>
     </section>
 
-    <section id="opensource">
-        <div class="container open-source">
-            <div>
-                <span class="mini-title">
-                    Open Source
-                </span>
-                <h2>
-                    Built because
-                    we couldn't find one.
-                </h2>
-                <p>
-                    Conversation Analyzer is completely open source,
-                    offline-first and community driven.
-                    If something is missing—
-                    let's build it together.
-                </p>
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Features</span>
+                <h2>Everything you need to understand an AI conversation.</h2>
+                <p>From reasoning and tool execution to token usage and conversation timelines — inspect every step visually.</p>
             </div>
-            <div class="opensource-actions">
-                <a class="primary" href="https://github.com/Conversation-analyzer" target="_blank">
-                    ⭐ Star on GitHub
+            <div class="feature-grid">
+                <div class="feature-card reveal">
+                    <span class="feature-card-icon">🧠</span>
+                    <h3>Reasoning Timeline</h3>
+                    <p>Follow every reasoning step from prompt to final response. See how the model thinks through complex problems.</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-1">
+                    <span class="feature-card-icon">⚡</span>
+                    <h3>Tool Call Inspection</h3>
+                    <p>Visualize every API and tool call with execution time, input/output payloads, and success/error status.</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-2">
+                    <span class="feature-card-icon">📊</span>
+                    <h3>Token Analytics</h3>
+                    <p>Input, output, reasoning, cache read/write, and total token breakdown with interactive charts.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <span class="feature-card-icon">🔍</span>
+                    <h3>Session Explorer</h3>
+                    <p>Grouped conversation turns with expandable details, role badges, latency tags, and per-turn metrics.</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-1">
+                    <span class="feature-card-icon">📈</span>
+                    <h3>Performance Insights</h3>
+                    <p>Latency breakdown with p50/p95 percentiles, context accumulation curves, and acceleration detection.</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-2">
+                    <span class="feature-card-icon">🤖</span>
+                    <h3>Multi-Agent Support</h3>
+                    <p>Compare multiple agents, identify behavioral patterns, and understand how different models approach tasks.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <span class="feature-card-icon">🔌</span>
+                    <h3>Pluggable Architecture</h3>
+                    <p>Abstract connector system — add support for new AI platforms with just a connection, datasource, and parser.</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-1">
+                    <span class="feature-card-icon">🔒</span>
+                    <h3>Privacy First</h3>
+                    <p>All analysis runs entirely in your browser. Your conversations are never sent to any server.</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-2">
+                    <span class="feature-card-icon">💰</span>
+                    <h3>Cost Analysis</h3>
+                    <p>Track API costs per session, per turn, and per tool call. Understand where your budget goes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">How It Works</span>
+                <h2>Four steps to deep insights.</h2>
+                <p>From raw conversation data to actionable analytics in seconds.</p>
+            </div>
+            <div class="steps reveal">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Export</h4>
+                    <p>Export your AI conversation as JSON from OpenCode or any supported platform.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Load</h4>
+                    <p>Upload the file or connect directly to a live session via the API.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Parse</h4>
+                    <p>The universal parser normalizes the data into a structured conversation model.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Explore</h4>
+                    <p>Visualize tokens, tools, reasoning, latency, and costs across interactive dashboards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Preview</span>
+                <h2>See it in action.</h2>
+                <p>Every conversation turns into a rich, interactive dashboard.</p>
+            </div>
+            <div class="screenshot-grid reveal">
+                <div class="screenshot-card">
+                    <div class="screenshot-placeholder">📊</div>
+                    <div class="screenshot-caption">Overview Dashboard</div>
+                </div>
+                <div class="screenshot-card">
+                    <div class="screenshot-placeholder">⏱️</div>
+                    <div class="screenshot-caption">Timeline Analysis</div>
+                </div>
+                <div class="screenshot-card">
+                    <div class="screenshot-placeholder">💬</div>
+                    <div class="screenshot-caption">Message Explorer</div>
+                </div>
+                <div class="screenshot-card">
+                    <div class="screenshot-placeholder">⚙️</div>
+                    <div class="screenshot-caption">Tool Inspector</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Why AI Conversation Analyzer</span>
+                <h2>Built for developers who build AI.</h2>
+                <p>Stop scrolling through JSON dumps. Start understanding.</p>
+            </div>
+            <div class="comparison-grid reveal">
+                <div class="comparison-card">
+                    <span class="comparison-icon">📖</span>
+                    <h4>Open Source</h4>
+                    <p>MIT licensed. Inspect the code, fork it, extend it. No black boxes.</p>
+                </div>
+                <div class="comparison-card">
+                    <span class="comparison-icon">🔒</span>
+                    <h4>Privacy First</h4>
+                    <p>Runs 100% in your browser. No data ever leaves your machine.</p>
+                </div>
+                <div class="comparison-card">
+                    <span class="comparison-icon">🏠</span>
+                    <h4>Local Analysis</h4>
+                    <p>No cloud dependency. Works offline with zero internet connection.</p>
+                </div>
+                <div class="comparison-card">
+                    <span class="comparison-icon">🔓</span>
+                    <h4>No Vendor Lock-in</h4>
+                    <p>Works with any AI platform through pluggable connectors.</p>
+                </div>
+                <div class="comparison-card">
+                    <span class="comparison-icon">🪶</span>
+                    <h4>Lightweight</h4>
+                    <p>Zero build step. Pure HTML/CSS/JS. Serve and go.</p>
+                </div>
+                <div class="comparison-card">
+                    <span class="comparison-icon">🛠️</span>
+                    <h4>Developer Friendly</h4>
+                    <p>Clean architecture, modular code, easy to contribute.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">By The Numbers</span>
+                <h2>Growing fast.</h2>
+            </div>
+            <div class="grid-4 reveal">
+                <div class="stat-card">
+                    <div class="stat-value" data-count="8" data-suffix="+">0</div>
+                    <div class="stat-label">Analytics Charts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" data-count="5" data-suffix="">0</div>
+                    <div class="stat-label">Platform Connectors</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" data-count="100" data-suffix="%">0</div>
+                    <div class="stat-label">Browser Based</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" data-count="0" data-suffix=" KB">0</div>
+                    <div class="stat-label">No Dependencies</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community -->
+    <section class="section section-alt" id="community">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Community</span>
+                <h2>Join the conversation.</h2>
+                <p>Found a bug? Have an idea? Want to contribute? We'd love to hear from you.</p>
+            </div>
+            <div class="community-grid reveal">
+                <a class="community-card" href="https://github.com/Conversation-analyzer" target="_blank">
+                    <i class="fa-brands fa-github"></i>
+                    <span>GitHub</span>
                 </a>
-                <a class="secondary" href="https://github.com/Conversation-analyzer" target="_blank">
-                    View Repository
+                <a class="community-card" href="https://github.com/Conversation-analyzer/discussions" target="_blank">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Discussions</span>
+                </a>
+                <a class="community-card" href="https://github.com/Conversation-analyzer/issues" target="_blank">
+                    <i class="fa-solid fa-bug"></i>
+                    <span>Issues</span>
+                </a>
+                <a class="community-card" href="https://github.com/Conversation-analyzer/pulls" target="_blank">
+                    <i class="fa-solid fa-code-pull-request"></i>
+                    <span>Pull Requests</span>
+                </a>
+                <a class="community-card" href="https://github.com/Conversation-analyzer/releases" target="_blank">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>Releases</span>
+                </a>
+                <a class="community-card" href="mailto:chnrndr3@email.com">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Email</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="community">
+    <!-- CTA -->
+    <section class="section">
         <div class="container">
-            <div class="community-box">
-                <span class="mini-title">Community</span>
-                <h2>
-                    Fine...
-                    We'll do it ourselves.
-                </h2>
-                <p>
-                    Found a bug?
-                    Open an issue.
-                    Have an idea?
-                    Start a discussion.
-                    Want to contribute?
-                    Open a pull request.
-                </p>
-                <div class="community-buttons">
-                    <a class="primary" href="https://github.com/Conversation-analyzer" target="_blank">
-                        <i class="fa-brands fa-github"></i> &nbsp;
-                        Join on GitHub
+            <div class="cta-banner reveal">
+                <h2>Ready to understand your AI conversations?</h2>
+                <p>Star the repository, read the docs, and start analyzing in minutes.</p>
+                <div class="cta-buttons">
+                    <a class="btn btn-primary btn-lg" href="https://github.com/Conversation-analyzer" target="_blank">
+                        <i class="fa-solid fa-star"></i> Star on GitHub
                     </a>
-                    <a class="secondary" href="mailto:chnrndr3@email.com">
-                        <i class="fa-solid fa-envelope"></i> &nbsp;
-                        Contact Email
-                    </a>
-                    <a class="secondary" href="https://instagram.com/narri___goud" target="_blank">
-                        <i class="fa-brands fa-instagram"></i> &nbsp;
-                        Instagram
+                    <a class="btn btn-secondary btn-lg" href="docs.html">
+                        <i class="fa-solid fa-book"></i> Read the Docs
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="nav-brand">
+                        <span class="nav-brand-dot"></span>
+                        AI Conversation Analyzer
+                    </div>
+                    <p>Debug, inspect, and visualize AI agent conversations. Open source, privacy first, built for developers.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <a href="features.html">Features</a>
+                    <a href="docs.html">Documentation</a>
+                    <a href="roadmap.html">Roadmap</a>
+                    <a href="changelog.html">Changelog</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Community</h4>
+                    <a href="community.html">Community</a>
+                    <a href="contributing.html">Contributing</a>
+                    <a href="https://github.com/Conversation-analyzer/issues" target="_blank">Report a Bug</a>
+                    <a href="https://github.com/Conversation-analyzer" target="_blank">GitHub</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <a href="https://github.com/Conversation-analyzer/blob/main/LICENSE" target="_blank">MIT License</a>
+                    <a href="about.html">About</a>
+                    <a href="mailto:chnrndr3@email.com">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 AI Conversation Analyzer. MIT Licensed.</span>
+                <div class="footer-socials">
+                    <a href="https://github.com/Conversation-analyzer" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="mailto:chnrndr3@email.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
 </body>
-
 </html>

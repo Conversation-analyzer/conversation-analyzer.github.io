@@ -1,292 +1,189 @@
 /* ==========================================================================
-   Conversation Analyzer Landing Page
-   script.js
+   AI Conversation Analyzer — Site JavaScript
    ========================================================================== */
 
-   (() => {
+(() => {
+    "use strict";
 
-    const prefersReducedMotion =
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    const isTouchDevice =
-        window.matchMedia("(hover: none)").matches;
-
-    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     /* ==========================================================
-       Splash / boot sequence
+       Shared Navigation
     ========================================================== */
 
-    const bootLines = [
-        { element: "line1", text: "Searching GitHub... ✖" },
-        { element: "line2", text: "Searching Reddit... ✖" },
-        { element: "line3", text: "Searching the ecosystem... ✖" }
-    ];
-
-    const finalText = "Fine...\nWe'll do it ourselves.";
-
-    const HAS_VISITED_KEY = "ca_splash_seen";
-
-    async function typeText(id, text, speed = 30) {
-        const el = document.getElementById(id);
-        if (!el) return;
-
-        if (prefersReducedMotion) {
-            el.textContent = text;
-            return;
-        }
-
-        el.textContent = "";
-        for (const char of text) {
-            el.textContent += char;
-            await sleep(speed);
-        }
-    }
-
-    async function runSplash() {
-        const splash = document.getElementById("splash");
-        if (!splash) return;
-
-        await sleep(700);
-
-        for (const item of bootLines) {
-            await typeText(item.element, item.text);
-            await sleep(450);
-        }
-
-        await sleep(500);
-        await typeText("finalLine", finalText, 35);
-        await sleep(1800);
-
-        splash.style.opacity = "0";
-        splash.style.pointerEvents = "none";
-
-        await sleep(900);
-        splash.remove();
-    }
-
-    function skipSplash() {
-        const splash = document.getElementById("splash");
-        if (splash) splash.remove();
-    }
-
-    /* ==========================================================
-       Rotating text panels (hero preview + dashboard demo)
-       Shared engine so both panels reuse the same logic.
-    ========================================================== */
-
-    function createRotator({ titleEl, textEl, frames, interval = 3500 }) {
-        if (!textEl || !frames.length) return null;
-
-        let index = 0;
-        let timerId = null;
-
-        function render() {
-            textEl.style.opacity = "0";
-            textEl.style.transform = "translateY(10px)";
-
-            setTimeout(() => {
-                index = (index + 1) % frames.length;
-
-                if (titleEl && frames[index].title) {
-                    titleEl.textContent = frames[index].title;
-                }
-
-                textEl.textContent = frames[index].text;
-
-                textEl.style.opacity = "1";
-                textEl.style.transform = "translateY(0)";
-            }, prefersReducedMotion ? 0 : 250);
-        }
-
-        function start() {
-            if (timerId || prefersReducedMotion) return;
-            timerId = setInterval(render, interval);
-        }
-
-        function stop() {
-            clearInterval(timerId);
-            timerId = null;
-        }
-
-        start();
-
-        // Pause work while the tab isn't visible.
-        document.addEventListener("visibilitychange", () => {
-            if (document.hidden) {
-                stop();
-            } else {
-                start();
-            }
-        });
-
-        return { start, stop };
-    }
-
-    const heroPreviewFrames = [
-        { text: "31,284 Tokens\n\nDiagnosis\n\nWho let bro cook?" },
-        { text: "Saved\n\n8,421 Tokens\n\nNature is healing." },
-        { text: "Loaded\n\n47 Tools\n\nUsed\n\n2\n\nThe rest came\nfor emotional support." },
-        { text: "Agent\n\nSolved without tools\n\nSometimes the best tool\nis knowing you don't\nneed one." },
-        { text: "Prompt Size\n\n18,004 Tokens\n\nI'm not mad.\n\nI'm just disappointed." }
-    ];
-
-    const dashboardFrames = [
-        { title: "Prompt Size", text: "31,284 Tokens\n\nDiagnosis\n\nWho let bro cook?" },
-        { title: "Optimization", text: "Saved\n\n8,421 Tokens\n\nNature is healing." },
-        { title: "Tool Usage", text: "Loaded\n\n47 Tools\n\nUsed\n\n2\n\nThe rest came\nfor emotional support." },
-        { title: "Timeline", text: "Human\n ↓\nLLM\n ↓\nFilesystem\n ↓\nGit\n\n\"I wasn't even called.\"" },
-        { title: "Memory", text: "18,922 Tokens\n\nI'm not mad.\n\nI'm just disappointed." }
-    ];
-
-    /* ==========================================================
-       Navbar scroll + mobile toggle
-    ========================================================== */
-
-    function navbarEffect() {
-        const nav = document.getElementById("navbar");
-        if (!nav) return;
+    function initNavbar() {
+        const navbar = document.querySelector(".navbar");
+        if (!navbar) return;
 
         let ticking = false;
-
         window.addEventListener("scroll", () => {
             if (ticking) return;
             ticking = true;
-
             requestAnimationFrame(() => {
-                if (window.scrollY > 40) {
-                    nav.style.background = "rgba(13,17,23,.82)";
-                    nav.style.borderBottom = "1px solid rgba(255,255,255,.08)";
-                } else {
-                    nav.style.background = "rgba(13,17,23,.55)";
-                    nav.style.borderBottom = "1px solid rgba(255,255,255,.04)";
-                }
+                navbar.classList.toggle("scrolled", window.scrollY > 30);
                 ticking = false;
             });
         }, { passive: true });
     }
 
-    function mobileNavToggle() {
-        const toggle = document.getElementById("navToggle");
-        const nav = document.getElementById("primaryNav");
-        if (!toggle || !nav) return;
+    function initMobileNav() {
+        const toggle = document.querySelector(".nav-toggle");
+        const links = document.querySelector(".nav-links");
+        if (!toggle || !links) return;
 
         toggle.addEventListener("click", () => {
-            const isOpen = nav.classList.toggle("open");
-            toggle.setAttribute("aria-expanded", String(isOpen));
+            const open = links.classList.toggle("open");
+            toggle.setAttribute("aria-expanded", String(open));
         });
 
-        nav.querySelectorAll("a").forEach(link => {
-            link.addEventListener("click", () => {
-                nav.classList.remove("open");
+        links.querySelectorAll("a").forEach(a => {
+            a.addEventListener("click", () => {
+                links.classList.remove("open");
                 toggle.setAttribute("aria-expanded", "false");
             });
         });
     }
 
+    function setActiveNavLink() {
+        const path = location.pathname.split("/").pop() || "index.html";
+        document.querySelectorAll(".nav-links a").forEach(a => {
+            const href = a.getAttribute("href");
+            if (href === path || (path === "" && href === "index.html")) {
+                a.classList.add("active");
+            }
+        });
+    }
+
     /* ==========================================================
-       Scroll reveal (single observer for all reveal targets)
+       Scroll Reveal
     ========================================================== */
 
-    function revealElements() {
-        const targets = document.querySelectorAll(".placeholder, .reveal");
-        if (!targets.length) return;
+    function initReveal() {
+        const els = document.querySelectorAll(".reveal");
+        if (!els.length) return;
 
-        if (prefersReducedMotion) {
-            targets.forEach(el => {
-                el.style.opacity = "1";
-                el.style.transform = "none";
-                el.classList.add("active");
-            });
+        if (REDUCED) {
+            els.forEach(el => el.classList.add("visible"));
             return;
         }
 
-        document.querySelectorAll(".placeholder").forEach(section => {
-            section.style.opacity = "0";
-            section.style.transform = "translateY(40px)";
-            section.style.transition = ".8s";
-        });
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
 
-        document
-            .querySelectorAll(".feature-card, .dashboard, .primary, .secondary")
-            .forEach(el => el.classList.add("reveal"));
+        els.forEach(el => observer.observe(el));
+    }
+
+    /* ==========================================================
+       Animated Counters
+    ========================================================== */
+
+    function initCounters() {
+        const els = document.querySelectorAll("[data-count]");
+        if (!els.length) return;
 
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
-
-                entry.target.classList.add("active");
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
-
-                observer.unobserve(entry.target);
+                const el = entry.target;
+                const target = parseInt(el.dataset.count, 10);
+                const suffix = el.dataset.suffix || "";
+                const duration = REDUCED ? 0 : 1500;
+                animateCounter(el, target, suffix, duration);
+                observer.unobserve(el);
             });
-        }, { threshold: .15 });
+        }, { threshold: 0.5 });
 
-        targets.forEach(el => observer.observe(el));
+        els.forEach(el => observer.observe(el));
+    }
+
+    function animateCounter(el, target, suffix, duration) {
+        if (duration === 0) {
+            el.textContent = formatNumber(target) + suffix;
+            return;
+        }
+        const start = performance.now();
+        function tick(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = formatNumber(Math.floor(eased * target)) + suffix;
+            if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+    }
+
+    function formatNumber(n) {
+        if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, "") + "k";
+        return String(n);
     }
 
     /* ==========================================================
-       Mouse-follow glow (skipped on touch / reduced-motion)
+       Rotating Text
     ========================================================== */
 
-    function mouseGlow() {
-        if (isTouchDevice || prefersReducedMotion) return;
+    function initRotator(selector, frames, interval = 3500) {
+        const el = document.querySelector(selector);
+        if (!el || !frames.length || REDUCED) return;
 
-        const glow = document.getElementById("mouse-glow");
-        if (!glow) return;
+        let index = 0;
+        setInterval(() => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(8px)";
+            setTimeout(() => {
+                index = (index + 1) % frames.length;
+                el.textContent = frames[index];
+                el.style.opacity = "1";
+                el.style.transform = "translateY(0)";
+            }, 250);
+        }, interval);
+    }
 
-        let x = window.innerWidth / 2;
-        let y = window.innerHeight / 2;
-        let rafId = null;
+    /* ==========================================================
+       Animated Bar Fills
+    ========================================================== */
 
-        function paint() {
-            glow.style.transform = `translate(${x - 300}px, ${y - 300}px)`;
-            rafId = null;
-        }
+    function initBarFills() {
+        const bars = document.querySelectorAll(".mock-bar-fill[data-width]");
+        if (!bars.length) return;
 
-        window.addEventListener("mousemove", (e) => {
-            x = e.clientX;
-            y = e.clientY;
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.style.width = entry.target.dataset.width;
+                observer.unobserve(entry.target);
+            });
+        }, { threshold: 0.3 });
 
-            if (!rafId) {
-                rafId = requestAnimationFrame(paint);
-            }
-        }, { passive: true });
+        bars.forEach(bar => {
+            bar.style.width = "0%";
+            observer.observe(bar);
+        });
     }
 
     /* ==========================================================
        Boot
     ========================================================== */
 
-    window.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
+        initNavbar();
+        initMobileNav();
+        setActiveNavLink();
+        initReveal();
+        initCounters();
+        initBarFills();
 
-        const hasSeenSplash = sessionStorage.getItem(HAS_VISITED_KEY);
-
-        if (hasSeenSplash) {
-            skipSplash();
-        } else {
-            sessionStorage.setItem(HAS_VISITED_KEY, "true");
-            runSplash();
-        }
-
-        createRotator({
-            textEl: document.querySelector(".preview pre"),
-            frames: heroPreviewFrames,
-            interval: 3500
-        });
-
-        createRotator({
-            titleEl: document.getElementById("analysisTitle"),
-            textEl: document.getElementById("analysisText"),
-            frames: dashboardFrames,
-            interval: 3500
-        });
-
-        navbarEffect();
-        mobileNavToggle();
-        revealElements();
-        mouseGlow();
+        initRotator("[data-rotate]", [
+            "31,284 tokens analyzed",
+            "47 tool calls inspected",
+            "12 reasoning chains mapped",
+            "8.2s average latency detected",
+            "2,400 lines of context traced"
+        ]);
     });
 
 })();
