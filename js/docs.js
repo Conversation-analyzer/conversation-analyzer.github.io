@@ -1,7 +1,6 @@
 /**
  * docs.js — Documentation page controller
- * Loads sidebar.json, renders sidebar, fetches + renders markdown files,
- * manages URL state, and initializes docs-specific interactivity.
+ * Sidebar, navigation, search (Ctrl+K), prev/next, URL state.
  */
 (function () {
     "use strict";
@@ -11,6 +10,7 @@
     var config      = window.APP_CONFIG || {};
     var sidebarData = null;
     var currentFile = null;
+    var allItems    = []; // flat list for prev/next + search
 
     /* ------------------------------------------------
        Helpers
@@ -34,8 +34,27 @@
         xhr.send();
     }
 
+    /** Read ?doc= param — if it doesn't end with .md, append it */
     function getDocParam() {
-        return new URLSearchParams(location.search).get("doc");
+        var doc = new URLSearchParams(location.search).get("doc");
+        if (doc && !doc.endsWith(".md")) doc += ".md";
+        return doc;
+    }
+
+    /** Strip .md for clean URL display */
+    function cleanUrl(file) {
+        return file.replace(/\.md$/, "");
+    }
+
+    /** Build flat ordered list of all items from sidebar */
+    function buildFlatList(data) {
+        var list = [];
+        data.sections.forEach(function (section) {
+            section.items.forEach(function (item) {
+                list.push({ title: item.title, file: item.file, section: section.title });
+            });
+        });
+        return list;
     }
 
     /* ------------------------------------------------
@@ -58,7 +77,7 @@
             section.items.forEach(function (item) {
                 var link = document.createElement("a");
                 link.className = "docs-nav-link";
-                link.href = "?doc=" + item.file;
+                link.href = "?doc=" + cleanUrl(item.file);
                 link.textContent = item.title;
                 link.dataset.file = item.file;
                 link.addEventListener("click", function (e) {
@@ -76,14 +95,12 @@
     }
 
     function renderSidebar(data) {
-        // Desktop sidebar
         var sidebar = document.getElementById("docs-sidebar");
         if (sidebar) {
             sidebar.innerHTML = "";
             sidebar.appendChild(buildSidebarNav(data));
         }
 
-        // Mobile dropdown
         var dropdown = document.querySelector(".docs-mobile-dropdown");
         if (dropdown) {
             dropdown.innerHTML = "";
@@ -96,14 +113,25 @@
        ------------------------------------------------ */
 
     function updateActiveLink(file) {
-        var links = document.querySelectorAll(".docs-nav-link");
-        links.forEach(function (link) {
+        document.querySelectorAll(".docs-nav-link").forEach(function (link) {
             link.classList.toggle("active", link.dataset.file === file);
         });
+
+        // Scroll active link into view in sidebar
+        var active = document.querySelector(".docs-nav-link.active");
+        if (active) {
+            var sidebar = document.getElementById("docs-sidebar");
+            if (sidebar) {
+                var top = active.offsetTop - sidebar.offsetTop;
+                if (top < sidebar.scrollTop || top > sidebar.scrollTop + sidebar.clientHeight - 40) {
+                    sidebar.scrollTop = top - 80;
+                }
+            }
+        }
     }
 
     /* ------------------------------------------------
-       "Edit this page on GitHub" link
+       Edit link
        ------------------------------------------------ */
 
     function updateEditLink(file) {
@@ -142,20 +170,69 @@
         fetchText(DOCS_DIR + file, function (md) {
             var html = window.MarkdownRenderer.render(md);
             var inner = document.getElementById("docs-content-inner");
-            inner.innerHTML = html + buildDocsFooter();
+            inner.innerHTML = html + buildPrevNext(file) + buildDocsFooter();
             updateActiveLink(file);
             updateEditLink(file);
             updateMobileBarText(file);
             pushState(file);
             initDocsTabs();
             initDocsCopy();
+            initPrevNext();
+            resolveLinks(inner);
+            // Scroll content to top
+            var content = document.getElementById("docs-content");
+            if (content) content.scrollTop = 0;
             if (typeof window.initReveal === "function") window.initReveal();
         });
     }
 
     function pushState(file) {
-        history.pushState({ doc: file }, "", "?doc=" + file);
+        history.pushState({ doc: file }, "", "?doc=" + cleanUrl(file));
     }
+
+    /* ------------------------------------------------
+       Prev / Next navigation
+       ------------------------------------------------ */
+
+    function buildPrevNext(file) {
+        var idx = -1;
+        for (var i = 0; i < allItems.length; i++) {
+            if (allItems[i].file === file) { idx = i; break; }
+        }
+        if (idx === -1) return "";
+
+        var prev = idx > 0 ? allItems[idx - 1] : null;
+        var next = idx < allItems.length - 1 ? allItems[idx + 1] : null;
+
+        var html = '<div class="docs-prev-next">';
+        if (prev) {
+            html += '<a class="docs-prev" href="?doc=' + cleanUrl(prev.file) + '" data-file="' + prev.file + '">' +
+                '<span class="docs-prev-next-label">\u2190 Previous</span>' +
+                '<span class="docs-prev-next-title">' + prev.title + '</span></a>';
+        } else {
+            html += '<span></span>';
+        }
+        if (next) {
+            html += '<a class="docs-next" href="?doc=' + cleanUrl(next.file) + '" data-file="' + next.file + '">' +
+                '<span class="docs-prev-next-label">Next \u2192</span>' +
+                '<span class="docs-prev-next-title">' + next.title + '</span></a>';
+        }
+        html += '</div>';
+        return html;
+    }
+
+    function initPrevNext() {
+        document.querySelectorAll(".docs-prev-next a").forEach(function (link) {
+            link.addEventListener("click", function (e) {
+                e.preventDefault();
+                navigateTo(link.dataset.file);
+            });
+        });
+    }
+
+    /* ------------------------------------------------
+       Docs footer
+       ------------------------------------------------ */
 
     function buildDocsFooter() {
         return '<div class="docs-footer">' +
@@ -175,9 +252,78 @@
         el.innerHTML = '<div class="docs-loading"><i class="fa-solid fa-spinner fa-spin"></i><p>Loading...</p></div>';
     }
 
-    function hideLoading() {
-        var el = document.querySelector(".docs-loading");
-        if (el) el.remove();
+    /* ------------------------------------------------
+       Search
+       ------------------------------------------------ */
+
+    function initSearch() {
+        var input = document.getElementById("docs-search-input");
+        var searchEl = document.getElementById("docs-search");
+        if (!input || !searchEl) return;
+
+        // Build results container
+        var results = document.createElement("div");
+        results.className = "docs-search-results";
+        searchEl.appendChild(results);
+
+        // Ctrl+K to focus
+        document.addEventListener("keydown", function (e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+                e.preventDefault();
+                input.focus();
+                input.select();
+            }
+            if (e.key === "Escape") {
+                input.blur();
+                results.classList.remove("open");
+            }
+        });
+
+        // Filter on input
+        input.addEventListener("input", function () {
+            var q = input.value.trim().toLowerCase();
+            if (!q) { results.classList.remove("open"); results.innerHTML = ""; return; }
+
+            var matches = allItems.filter(function (item) {
+                return item.title.toLowerCase().indexOf(q) !== -1 ||
+                       item.section.toLowerCase().indexOf(q) !== -1 ||
+                       item.file.toLowerCase().indexOf(q) !== -1;
+            });
+
+            if (!matches.length) {
+                results.innerHTML = '<div class="docs-search-empty">No results found</div>';
+                results.classList.add("open");
+                return;
+            }
+
+            var html = "";
+            matches.forEach(function (item) {
+                html += '<a class="docs-search-result" href="?doc=' + cleanUrl(item.file) + '" data-file="' + item.file + '">' +
+                    '<span class="docs-search-result-title">' + item.title + '</span>' +
+                    '<span class="docs-search-result-section">' + item.section + '</span></a>';
+            });
+            results.innerHTML = html;
+            results.classList.add("open");
+
+            // Click to navigate
+            results.querySelectorAll(".docs-search-result").forEach(function (link) {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    navigateTo(link.dataset.file);
+                    input.value = "";
+                    results.classList.remove("open");
+                    results.innerHTML = "";
+                    closeMobileDocsNav();
+                });
+            });
+        });
+
+        // Close results on click outside
+        document.addEventListener("click", function (e) {
+            if (!searchEl.contains(e.target)) {
+                results.classList.remove("open");
+            }
+        });
     }
 
     /* ------------------------------------------------
@@ -223,12 +369,10 @@
         var dropdown = document.querySelector(".docs-mobile-dropdown");
         if (!bar || !dropdown) return;
 
-        // Toggle dropdown on bar click
         bar.addEventListener("click", function (e) {
             e.stopPropagation();
             var open = dropdown.classList.toggle("open");
             bar.classList.toggle("open", open);
-            // Close main hamburger if open
             var toggle = document.querySelector(".nav-toggle");
             var navLinks = document.querySelector(".nav-links");
             if (open && navLinks && navLinks.classList.contains("open")) {
@@ -237,7 +381,6 @@
             }
         });
 
-        // Close on click outside
         document.addEventListener("click", function (e) {
             if (!bar.contains(e.target) && !dropdown.contains(e.target)) {
                 closeMobileDocsNav();
@@ -283,19 +426,19 @@
        ------------------------------------------------ */
 
     document.addEventListener("DOMContentLoaded", function () {
-        // Only run on docs page
         if (!document.getElementById("docs-sidebar")) return;
 
         fetchJSON(SIDEBAR_URL, function (data) {
             sidebarData = data;
+            allItems = buildFlatList(data);
             renderSidebar(data);
             initMobileDocsNav();
+            initSearch();
 
             var doc = getDocParam() || data.sections[0].items[0].file;
             navigateTo(doc);
         });
 
-        // Handle back/forward
         window.addEventListener("popstate", function (e) {
             if (e.state && e.state.doc) {
                 navigateTo(e.state.doc);
@@ -306,6 +449,5 @@
         });
     });
 
-    // Expose for include.js link resolution after dynamic content load
     window.resolveLinks = resolveLinks;
 })();

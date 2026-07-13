@@ -82,6 +82,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    position: relative;
     margin-bottom: 32px;
     padding: 12px 16px;
     border: 1px solid var(--border-light);
@@ -124,6 +125,39 @@
     border-radius: 4px;
     flex-shrink: 0;
 }
+
+/* Search Results Dropdown */
+.docs-search-results {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    margin-top: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    max-height: 320px;
+    overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    z-index: 100;
+}
+.docs-search-results.open { display: block; }
+
+.docs-search-result {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 16px;
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-light);
+    transition: background var(--transition);
+}
+.docs-search-result:last-child { border-bottom: none; }
+.docs-search-result:hover { background: rgba(255,255,255,0.04); }
+.docs-search-result-title { font-size: 14px; font-weight: 500; }
+.docs-search-result-section { font-size: 12px; color: var(--muted); }
+.docs-search-empty { padding: 16px; text-align: center; color: var(--muted); font-size: 14px; }
 
 /* ===========================
    Docs Page — Sections
@@ -474,6 +508,36 @@
     color: var(--muted);
     margin: 0;
 }
+
+/* ===========================
+   Docs Page — Prev / Next
+   =========================== */
+
+.docs-prev-next {
+    display: flex;
+    gap: 16px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-light);
+}
+.docs-prev, .docs-next {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: border-color var(--transition), background var(--transition);
+}
+.docs-prev:hover, .docs-next:hover {
+    border-color: var(--primary-border);
+    background: var(--primary-bg);
+}
+.docs-next { text-align: right; align-items: flex-end; }
+.docs-prev-next-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.docs-prev-next-title { font-size: 15px; font-weight: 600; color: var(--text); }
 
 /* ===========================
    Docs Page — Footer
