@@ -28,128 +28,624 @@
 
     <div id="site-header"></div>
 
-    <!-- Page Header -->
-    <header class="page-header">
-        <div class="container">
-            <span class="badge">Currently Being Written</span>
-            <h1>Documentation</h1>
-            <p>Everything you need to get started with AI Conversation Analyzer. Guides, references, and resources — all in one place.</p>
-        </div>
-    </header>
+    <!-- Docs Layout -->
+    <div class="docs-layout">
 
-    <!-- Under Construction Message -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header reveal">
-                <i class="fa-solid fa-book-open" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 16px; display: block;"></i>
-                <h2>Documentation Under Construction</h2>
-                <p>Our comprehensive documentation is currently being written and polished. Check back soon for detailed guides and API references.</p>
-            </div>
-        </div>
-    </section>
+        <!-- Sidebar -->
+        <aside class="docs-sidebar" id="docs-sidebar">
+            <nav class="docs-nav">
 
-    <!-- Docs Sections Grid -->
-    <section class="section section-alt">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-label">Sections</span>
-                <h2>What's coming.</h2>
-                <p>Each section is being carefully written to help you get the most out of AI Conversation Analyzer.</p>
-            </div>
-            <div class="docs-coming-soon reveal">
-                <div class="docs-section-card">
-                    <i class="fa-solid fa-download"></i>
-                    <div>
-                        <span>Installation</span>
-                        <p class="text-sm text-muted">Step-by-step instructions to get started on any platform.</p>
-                    </div>
-                    <span class="tag tag-blue">Soon</span>
+                <div class="docs-nav-group">
+                    <span class="docs-nav-heading">Getting Started</span>
+                    <a href="#prerequisites" class="docs-nav-link active">Prerequisites</a>
+                    <a href="#installation" class="docs-nav-link">Installation</a>
+                    <a href="#run-locally" class="docs-nav-link">Run Locally</a>
                 </div>
-                <div class="docs-section-card">
-                    <i class="fa-solid fa-bolt"></i>
-                    <div>
-                        <span>Quick Start</span>
-                        <p class="text-sm text-muted">Analyze your first conversation in under 5 minutes.</p>
-                    </div>
-                    <span class="tag tag-blue">Soon</span>
+
+                <div class="docs-nav-group">
+                    <span class="docs-nav-heading">Usage</span>
+                    <a href="#upload-json" class="docs-nav-link">Upload JSON</a>
+                    <a href="#demo-session" class="docs-nav-link">Demo Session</a>
+                    <a href="#connect-backend" class="docs-nav-link">Connect to Backend</a>
+                    <a href="#live-polling" class="docs-nav-link">Live Polling</a>
                 </div>
-                <div class="docs-section-card">
-                    <i class="fa-solid fa-gear"></i>
-                    <div>
-                        <span>Configuration</span>
-                        <p class="text-sm text-muted">Customize parsers, themes, connectors, and behavior.</p>
-                    </div>
-                    <span class="tag tag-blue">Soon</span>
+
+                <div class="docs-nav-group">
+                    <span class="docs-nav-heading">Configuration</span>
+                    <a href="#app-settings" class="docs-nav-link">App Settings</a>
+                    <a href="#backend-config" class="docs-nav-link">Backend Config</a>
+                    <a href="#adding-backends" class="docs-nav-link">Adding Backends</a>
                 </div>
-                <div class="docs-section-card">
-                    <i class="fa-solid fa-code"></i>
-                    <div>
-                        <span>API Reference</span>
-                        <p class="text-sm text-muted">Complete reference for all functions, classes, and modules.</p>
-                    </div>
-                    <span class="tag tag-blue">Soon</span>
+
+                <div class="docs-nav-group">
+                    <span class="docs-nav-heading">Architecture</span>
+                    <a href="#data-flow" class="docs-nav-link">Data Flow</a>
+                    <a href="#file-structure" class="docs-nav-link">File Structure</a>
+                    <a href="#conversation-spec" class="docs-nav-link">ConversationSpec</a>
                 </div>
-                <div class="docs-section-card">
-                    <i class="fa-solid fa-file-code"></i>
-                    <div>
-                        <span>Parser Guide</span>
-                        <p class="text-sm text-muted">How the parser works and how to extend it for new formats.</p>
-                    </div>
-                    <span class="tag tag-blue">Soon</span>
+
+                <div class="docs-nav-group">
+                    <span class="docs-nav-heading">API Reference</span>
+                    <a href="#parser" class="docs-nav-link">Parser</a>
+                    <a href="#extractors" class="docs-nav-link">Extractors</a>
+                    <a href="#connectors" class="docs-nav-link">Connectors</a>
                 </div>
-                <div class="docs-section-card">
-                    <i class="fa-solid fa-chart-line"></i>
-                    <div>
-                        <span>Visualization</span>
-                        <p class="text-sm text-muted">Understand charts, graphs, and dashboard components.</p>
-                    </div>
-                    <span class="tag tag-blue">Soon</span>
+
+                <div class="docs-nav-group">
+                    <span class="docs-nav-heading">Resources</span>
+                    <a href="#faq" class="docs-nav-link">FAQ</a>
                 </div>
-                <div class="docs-section-card">
+
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="docs-content">
+
+            <!-- Getting Started -->
+            <section id="prerequisites" class="docs-section">
+                <h2>Prerequisites</h2>
+                <p class="docs-lead">Before using AI Conversation Analyzer, make sure you have the following.</p>
+
+                <div class="docs-callout docs-callout-tip">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <div>
+                        <strong>Tip</strong>
+                        <p>AI Conversation Analyzer runs entirely in the browser. No server-side installation is required.</p>
+                    </div>
+                </div>
+
+                <ul class="docs-list">
+                    <li><i class="fa-solid fa-check"></i> A modern browser (Chrome, Edge, Firefox, or Safari)</li>
+                    <li><i class="fa-solid fa-check"></i> A local HTTP server (the app uses ES modules and cannot run from <code>file://</code>)</li>
+                    <li><i class="fa-solid fa-check"></i> A session JSON file in OpenCode format, or a running OpenCode instance</li>
+                </ul>
+            </section>
+
+            <hr class="divider">
+
+            <section id="installation" class="docs-section">
+                <h2>Installation</h2>
+                <p class="docs-lead">Clone the repository and serve it locally.</p>
+
+                <div class="docs-code-block">
+                    <div class="docs-code-header">
+                        <span class="docs-code-lang">Terminal</span>
+                        <button class="docs-copy-btn" data-copy><i class="fa-regular fa-copy"></i></button>
+                    </div>
+                    <pre><code>git clone https://github.com/Conversation-analyzer/ai_conversation_analyzer.git
+cd ai_conversation_analyzer</code></pre>
+                </div>
+            </section>
+
+            <hr class="divider">
+
+            <section id="run-locally" class="docs-section">
+                <h2>Run Locally</h2>
+                <p class="docs-lead">Start a local HTTP server using any of these methods.</p>
+
+                <div class="docs-tabs">
+                    <div class="docs-tab-buttons">
+                        <button class="docs-tab-btn active" data-tab="python">Python</button>
+                        <button class="docs-tab-btn" data-tab="node">Node.js</button>
+                        <button class="docs-tab-btn" data-tab="php">PHP</button>
+                    </div>
+                    <div class="docs-tab-panel active" data-tab-panel="python">
+                        <div class="docs-code-block">
+                            <div class="docs-code-header">
+                                <span class="docs-code-lang">Terminal</span>
+                                <button class="docs-copy-btn" data-copy><i class="fa-regular fa-copy"></i></button>
+                            </div>
+                            <pre><code>python -m http.server 8080</code></pre>
+                        </div>
+                    </div>
+                    <div class="docs-tab-panel" data-tab-panel="node">
+                        <div class="docs-code-block">
+                            <div class="docs-code-header">
+                                <span class="docs-code-lang">Terminal</span>
+                                <button class="docs-copy-btn" data-copy><i class="fa-regular fa-copy"></i></button>
+                            </div>
+                            <pre><code>npx serve .</code></pre>
+                        </div>
+                    </div>
+                    <div class="docs-tab-panel" data-tab-panel="php">
+                        <div class="docs-code-block">
+                            <div class="docs-code-header">
+                                <span class="docs-code-lang">Terminal</span>
+                                <button class="docs-copy-btn" data-copy><i class="fa-regular fa-copy"></i></button>
+                            </div>
+                            <pre><code>php -S localhost:8080</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <p>Then open <code>http://localhost:8080</code> in your browser.</p>
+            </section>
+
+            <hr class="divider">
+
+            <!-- Usage -->
+            <section id="upload-json" class="docs-section">
+                <h2>Upload JSON</h2>
+                <p class="docs-lead">Load a session by uploading a JSON file.</p>
+
+                <ol class="docs-steps">
+                    <li>
+                        <span class="docs-step-num">1</span>
+                        <div>
+                            <strong>Click "Upload"</strong>
+                            <p>Find the Upload button in the top navigation bar.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="docs-step-num">2</span>
+                        <div>
+                            <strong>Select your JSON file</strong>
+                            <p>Choose a session file in OpenCode JSON format.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="docs-step-num">3</span>
+                        <div>
+                            <strong>Explore the dashboard</strong>
+                            <p>The Overview, Timeline, Messages, Tools, and Insights tabs will populate automatically.</p>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+
+            <hr class="divider">
+
+            <section id="demo-session" class="docs-section">
+                <h2>Demo Session</h2>
+                <p class="docs-lead">Try the analyzer instantly with a bundled sample session.</p>
+
+                <div class="docs-callout docs-callout-note">
+                    <i class="fa-solid fa-info-circle"></i>
+                    <div>
+                        <strong>Note</strong>
+                        <p>The demo session contains a realistic OpenCode conversation with tool calls, reasoning chains, and token usage data.</p>
+                    </div>
+                </div>
+
+                <!-- Placeholder: demo screenshot or instructions -->
+                <div class="docs-placeholder">
+                    <i class="fa-solid fa-image"></i>
+                    <p>Demo session instructions coming soon.</p>
+                </div>
+            </section>
+
+            <hr class="divider">
+
+            <section id="connect-backend" class="docs-section">
+                <h2>Connect to Backend</h2>
+                <p class="docs-lead">Connect to a running OpenCode instance for live data.</p>
+
+                <!-- Placeholder: connection steps -->
+                <div class="docs-placeholder">
                     <i class="fa-solid fa-terminal"></i>
-                    <div>
-                        <span>CLI</span>
-                        <p class="text-sm text-muted">Command-line usage, flags, and scripting examples.</p>
-                    </div>
-                    <span class="tag tag-blue">Soon</span>
+                    <p>Backend connection guide coming soon.</p>
                 </div>
-                <div class="docs-section-card">
-                    <i class="fa-solid fa-sitemap"></i>
-                    <div>
-                        <span>Architecture</span>
-                        <p class="text-sm text-muted">System design, component interactions, and data flow.</p>
-                    </div>
-                    <span class="tag tag-blue">Soon</span>
-                </div>
-                <div class="docs-section-card">
-                    <i class="fa-solid fa-circle-question"></i>
-                    <div>
-                        <span>FAQ</span>
-                        <p class="text-sm text-muted">Answers to the most commonly asked questions.</p>
-                    </div>
-                    <span class="tag tag-muted">Soon</span>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- CTA -->
-    <section class="section">
-        <div class="container">
-            <div class="cta-banner reveal">
-                <h2>Can't wait for the docs?</h2>
-                <p>Explore the source code on GitHub or try the live demo right now.</p>
-                <div class="cta-buttons">
-                    <a class="btn btn-primary" data-github="base" target="_blank">
-                        <i class="fa-brands fa-github"></i> View Source Code
-                    </a>
-                    <a class="btn btn-secondary" href="index">
-                        <i class="fa-solid fa-arrow-left"></i> Back to Home
-                    </a>
+            <hr class="divider">
+
+            <section id="live-polling" class="docs-section">
+                <h2>Live Polling</h2>
+                <p class="docs-lead">Automatically refresh the dashboard with real-time data from your AI agent.</p>
+
+                <div class="docs-callout docs-callout-warning">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <div>
+                        <strong>Warning</strong>
+                        <p>Live polling sends requests every 4 seconds. Make sure your OpenCode instance is running and accessible.</p>
+                    </div>
                 </div>
+
+                <!-- Placeholder: polling details -->
+                <div class="docs-placeholder">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                    <p>Live polling details coming soon.</p>
+                </div>
+            </section>
+
+            <hr class="divider">
+
+            <!-- Configuration -->
+            <section id="app-settings" class="docs-section">
+                <h2>App Settings</h2>
+                <p class="docs-lead">Configure the application defaults in <code>config/analyzer.json</code>.</p>
+
+                <div class="docs-table-wrap">
+                    <table class="docs-table">
+                        <thead>
+                            <tr>
+                                <th>Key</th>
+                                <th>Type</th>
+                                <th>Default</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>theme</code></td>
+                                <td><code>string</code></td>
+                                <td><code>"dark"</code></td>
+                                <td>Default theme (<code>"dark"</code> or <code>"light"</code>). Overridden by browser preference and localStorage.</td>
+                            </tr>
+                            <tr>
+                                <td><code>defaultTab</code></td>
+                                <td><code>string</code></td>
+                                <td><code>"overview"</code></td>
+                                <td>Tab shown on startup. Options: <code>"overview"</code>, <code>"timeline"</code>, <code>"messages"</code>, <code>"tools"</code>, <code>"insights"</code>.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <hr class="divider">
+
+            <section id="backend-config" class="docs-section">
+                <h2>Backend Config</h2>
+                <p class="docs-lead">Configure connection details in <code>config/opencode.json</code>.</p>
+
+                <div class="docs-table-wrap">
+                    <table class="docs-table">
+                        <thead>
+                            <tr>
+                                <th>Key</th>
+                                <th>Type</th>
+                                <th>Default</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>type</code></td>
+                                <td><code>string</code></td>
+                                <td><code>"opencode"</code></td>
+                                <td>Connection type identifier.</td>
+                            </tr>
+                            <tr>
+                                <td><code>label</code></td>
+                                <td><code>string</code></td>
+                                <td><code>"OpenCode (local)"</code></td>
+                                <td>Display name shown in the connector picker.</td>
+                            </tr>
+                            <tr>
+                                <td><code>protocol</code></td>
+                                <td><code>string</code></td>
+                                <td><code>"http"</code></td>
+                                <td>HTTP or HTTPS.</td>
+                            </tr>
+                            <tr>
+                                <td><code>host</code></td>
+                                <td><code>string</code></td>
+                                <td><code>"127.0.0.1"</code></td>
+                                <td>Backend hostname or IP.</td>
+                            </tr>
+                            <tr>
+                                <td><code>port</code></td>
+                                <td><code>number</code></td>
+                                <td><code>4472</code></td>
+                                <td>Backend port number.</td>
+                            </tr>
+                            <tr>
+                                <td><code>timeout</code></td>
+                                <td><code>number</code></td>
+                                <td><code>10000</code></td>
+                                <td>Request timeout in milliseconds.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <hr class="divider">
+
+            <section id="adding-backends" class="docs-section">
+                <h2>Adding Backends</h2>
+                <p class="docs-lead">Extend the analyzer to support new AI platforms by adding 3 files and a config entry.</p>
+
+                <ol class="docs-steps">
+                    <li>
+                        <span class="docs-step-num">1</span>
+                        <div>
+                            <strong>Create the connection class</strong>
+                            <p>Add <code>js/connections/myplatform.js</code> implementing the <code>get(path)</code> method.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="docs-step-num">2</span>
+                        <div>
+                            <strong>Create the datasource class</strong>
+                            <p>Add <code>js/datasource/myplatform.js</code> implementing <code>getMessages(id)</code> and <code>getLatestSession()</code>.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="docs-step-num">3</span>
+                        <div>
+                            <strong>Create the parser</strong>
+                            <p>Add <code>js/parser/myplatform_parser.js</code> to convert raw data into a <code>ConversationSpec</code>.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="docs-step-num">4</span>
+                        <div>
+                            <strong>Register in config</strong>
+                            <p>Add your config to <code>config/myplatform.json</code> and list it in <code>config/manifest.json</code>.</p>
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="docs-callout docs-callout-tip">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <div>
+                        <strong>Tip</strong>
+                        <p>Use the existing OpenCode implementation as a reference. The connection, datasource, and parser files are under 100 lines each.</p>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="divider">
+
+            <!-- Architecture -->
+            <section id="data-flow" class="docs-section">
+                <h2>Data Flow</h2>
+                <p class="docs-lead">The analyzer follows a unidirectional data flow pattern.</p>
+
+                <div class="docs-placeholder">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <p>Data flow diagram coming soon.</p>
+                </div>
+
+                <div class="docs-code-block">
+                    <div class="docs-code-header">
+                        <span class="docs-code-lang">Data Flow</span>
+                    </div>
+                    <pre><code>Raw JSON / API Response
+        |
+        v
+    Parser          --> ConversationSpec (normalized model)
+        |
+        v
+    Extractor       --> session, metrics, messages, tools, timeline, summary
+        |
+        v
+    Renderer        --> DOM (Overview, Timeline, Messages, Tools, Insights)</code></pre>
+                </div>
+            </section>
+
+            <hr class="divider">
+
+            <section id="file-structure" class="docs-section">
+                <h2>File Structure</h2>
+                <p class="docs-lead">Key files and their responsibilities.</p>
+
+                <div class="docs-table-wrap">
+                    <table class="docs-table">
+                        <thead>
+                            <tr>
+                                <th>File</th>
+                                <th>Responsibility</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>js/app.js</code></td>
+                                <td>Application core. Manages state, event handlers, and orchestrates the render pipeline.</td>
+                            </tr>
+                            <tr>
+                                <td><code>js/renderer.js</code></td>
+                                <td>All HTML rendering for Overview, Timeline, Messages, Tools, and Insights tabs.</td>
+                            </tr>
+                            <tr>
+                                <td><code>js/grids.js</code></td>
+                                <td>AG Grid integration for sortable, filterable message and tool tables.</td>
+                            </tr>
+                            <tr>
+                                <td><code>js/charts.js</code></td>
+                                <td>Plotly chart rendering — 7 chart types for the Insights tab.</td>
+                            </tr>
+                            <tr>
+                                <td><code>js/extractor.js</code></td>
+                                <td>Six extraction functions that pull specific slices from ConversationSpec.</td>
+                            </tr>
+                            <tr>
+                                <td><code>js/parser/opencode_parser.js</code></td>
+                                <td>Converts raw OpenCode JSON into a normalized ConversationSpec.</td>
+                            </tr>
+                            <tr>
+                                <td><code>js/connections/</code></td>
+                                <td>HTTP client classes for each supported backend.</td>
+                            </tr>
+                            <tr>
+                                <td><code>js/datasource/</code></td>
+                                <td>Data fetchers that use connections to retrieve sessions and messages.</td>
+                            </tr>
+                            <tr>
+                                <td><code>config/</code></td>
+                                <td>JSON configuration files for the app and each backend.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <hr class="divider">
+
+            <section id="conversation-spec" class="docs-section">
+                <h2>ConversationSpec</h2>
+                <p class="docs-lead">The normalized data model that all renderers consume.</p>
+
+                <div class="docs-code-block">
+                    <div class="docs-code-header">
+                        <span class="docs-code-lang">Schema</span>
+                    </div>
+                    <pre><code>{
+  version: "1.0",
+  source: "opencode",             // "opencode" | "cursor" | "claude" | ...
+  session: {
+    id: "ses_...",
+    title: "...",
+    startedAt: "...",
+    completedAt: "..."
+  },
+  assistant: {
+    agent: "...",
+    model: "...",
+    provider: "..."
+  },
+  metrics: {
+    inputTokens: 0,
+    outputTokens: 0,
+    reasoningTokens: 0,
+    totalTokens: 0,
+    cacheRead: 0,
+    cacheWrite: 0,
+    cost: 0
+  },
+  messages: [...],                // Compiled messages with parts
+  timeline: [...],                // Sorted events (MESSAGE, REASONING, TOOL_START, TOOL_END)
+  tools: [...],                   // Tool calls with duration and status
+  metadata: {}
+}</code></pre>
+                </div>
+            </section>
+
+            <hr class="divider">
+
+            <!-- API Reference -->
+            <section id="parser" class="docs-section">
+                <h2>Parser</h2>
+                <p class="docs-lead">Convert raw session data into a ConversationSpec.</p>
+
+                <div class="docs-code-block">
+                    <div class="docs-code-header">
+                        <span class="docs-code-lang">JavaScript</span>
+                        <button class="docs-copy-btn" data-copy><i class="fa-regular fa-copy"></i></button>
+                    </div>
+                    <pre><code>import { parseOpenCodeSession } from "./parser/opencode_parser.js";
+
+const conversation = parseOpenCodeSession(rawJsonArray);</code></pre>
+                </div>
+
+                <!-- Placeholder: full API details -->
+                <div class="docs-placeholder">
+                    <i class="fa-solid fa-code"></i>
+                    <p>Full parser API documentation coming soon.</p>
+                </div>
+            </section>
+
+            <hr class="divider">
+
+            <section id="extractors" class="docs-section">
+                <h2>Extractors</h2>
+                <p class="docs-lead">Extract specific data slices from a ConversationSpec.</p>
+
+                <div class="docs-table-wrap">
+                    <table class="docs-table">
+                        <thead>
+                            <tr>
+                                <th>Function</th>
+                                <th>Returns</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>extractSession(conv)</code></td>
+                                <td>Session info, assistant details, and summary stats.</td>
+                            </tr>
+                            <tr>
+                                <td><code>extractMetrics(conv)</code></td>
+                                <td>Token counts, cache stats, cost, and health score.</td>
+                            </tr>
+                            <tr>
+                                <td><code>extractMessages(conv)</code></td>
+                                <td>Compiled messages grouped into conversation turns.</td>
+                            </tr>
+                            <tr>
+                                <td><code>extractTools(conv)</code></td>
+                                <td>All tool calls with input, output, status, and duration.</td>
+                            </tr>
+                            <tr>
+                                <td><code>extractTimeline(conv)</code></td>
+                                <td>Sorted timeline events for the event stream view.</td>
+                            </tr>
+                            <tr>
+                                <td><code>extractSummary(conv)</code></td>
+                                <td>Quick summary stats (total messages, tools used, duration).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <hr class="divider">
+
+            <section id="connectors" class="docs-section">
+                <h2>Connectors</h2>
+                <p class="docs-lead">Connection and datasource managers for backend communication.</p>
+
+                <!-- Placeholder: connector API details -->
+                <div class="docs-placeholder">
+                    <i class="fa-solid fa-plug"></i>
+                    <p>Connector API documentation coming soon.</p>
+                </div>
+            </section>
+
+            <hr class="divider">
+
+            <!-- FAQ -->
+            <section id="faq" class="docs-section">
+                <h2>FAQ</h2>
+                <p class="docs-lead">Frequently asked questions.</p>
+
+                <div class="docs-faq-item">
+                    <h4>What file formats are supported?</h4>
+                    <p>Currently, the analyzer supports OpenCode session JSON format. Support for Cursor, Claude Code, and generic JSON is planned on the roadmap.</p>
+                </div>
+
+                <div class="docs-faq-item">
+                    <h4>Which browsers are supported?</h4>
+                    <p>Chrome, Edge, Firefox, and Safari. The app uses ES modules and IntersectionObserver, which are supported in all modern browsers.</p>
+                </div>
+
+                <div class="docs-faq-item">
+                    <h4>Is there a CLI version?</h4>
+                    <p>No. AI Conversation Analyzer is a browser-based tool. There is no server-side component or CLI.</p>
+                </div>
+
+                <div class="docs-faq-item">
+                    <h4>How is the health score calculated?</h4>
+                    <p>The health score (0-100) is computed from two factors: tool error rate and reasoning share. A high error rate or very low reasoning activity lowers the score.</p>
+                </div>
+
+                <div class="docs-faq-item">
+                    <h4>Can I change the live polling interval?</h4>
+                    <p>Currently, the polling interval is hardcoded at 4 seconds. Configurable polling is planned for a future release.</p>
+                </div>
+
+                <div class="docs-faq-item">
+                    <h4>Does my data leave my machine?</h4>
+                    <p>No. The analyzer runs entirely in your browser. When using file upload, data never leaves your device. When connecting to a backend, requests go only to the host you configure.</p>
+                </div>
+            </section>
+
+            <!-- Docs Footer -->
+            <div class="docs-footer">
+                <a class="btn btn-secondary btn-sm" data-github="repo" target="_blank">
+                    <i class="fa-brands fa-github"></i> Edit this page on GitHub
+                </a>
+                <a class="btn btn-secondary btn-sm" data-github="issues" target="_blank">
+                    <i class="fa-solid fa-bug"></i> Report an issue
+                </a>
             </div>
-        </div>
-    </section>
+
+        </main>
+
+    </div>
 
     <div id="site-footer"></div>
 

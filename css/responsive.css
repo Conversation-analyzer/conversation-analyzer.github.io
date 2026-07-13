@@ -16,6 +16,7 @@
     .content-grid { grid-template-columns: 1fr; }
     .grid-3 { grid-template-columns: repeat(2, 1fr); }
     .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .docs-content { padding: 40px 36px 80px; }
 }
 
 @media (max-width: 768px) {
