@@ -61,6 +61,10 @@
     .footer-grid { grid-template-columns: 1fr; gap: 32px; }
     .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
 
+    /* Code blocks */
+    .card pre { max-width: 100%; overflow-x: auto; font-size: 12px; }
+    .code-block { font-size: 12px; }
+
     /* Misc */
     .mock-stat-row { grid-template-columns: 1fr; }
     .section-header { margin-bottom: 40px; }
@@ -81,6 +85,7 @@
     .btn { padding: 12px 20px; font-size: 14px; }
     .btn-lg { padding: 14px 24px; font-size: 15px; }
     .card { padding: 20px; }
+    .card pre { padding: 12px; font-size: 11px; }
     .feature-card { padding: 20px; }
     .timeline-phase { font-size: 11px; }
     .step-number { width: 44px; height: 44px; font-size: 14px; }

@@ -74,6 +74,7 @@
     border: 1px solid var(--border-light);
     border-radius: var(--radius-lg);
     padding: 32px;
+    overflow: hidden;
     transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 

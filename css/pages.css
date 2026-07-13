@@ -674,6 +674,7 @@
     overflow-x: auto;
     border: 1px solid var(--border-light);
     white-space: pre;
+    max-width: 100%;
 }
 
 .code-block .comment { color: var(--muted); }
