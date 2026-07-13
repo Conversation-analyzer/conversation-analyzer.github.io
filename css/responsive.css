@@ -79,19 +79,17 @@
     /* Docs mobile sidebar dropdown */
     .docs-layout { display: block; }
     .docs-sidebar { display: none; }
-    .docs-content { padding: calc(var(--nav-height) + 48px + 44px + 8px) 16px 60px; }
+    .docs-content { padding: calc(44px + 44px + 8px) 16px 60px; }
 
-    /* Search bar — fixed between header and mobile bar */
+    /* Search bar — fixed below header on mobile */
     .docs-search {
         position: fixed;
-        top: calc(var(--nav-height));
+        top: var(--nav-height);
         left: 0; right: 0;
         z-index: 999;
-        border-radius: 0;
-        border-left: none;
-        border-right: none;
-        border-top: none;
-        margin-bottom: 0;
+        padding: 10px 16px;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border-light);
     }
 
     .docs-mobile-bar {
@@ -99,7 +97,7 @@
         align-items: center;
         justify-content: space-between;
         position: fixed;
-        top: calc(var(--nav-height) + 48px);
+        top: calc(var(--nav-height) + 44px);
         left: 0; right: 0;
         z-index: 999;
         padding: 0 20px;
@@ -126,7 +124,7 @@
     .docs-mobile-dropdown {
         display: none;
         position: fixed;
-        top: calc(var(--nav-height) + 48px + 44px);
+        top: calc(var(--nav-height) + 44px + 44px);
         left: 0; right: 0;
         z-index: 998;
         max-height: 50vh;

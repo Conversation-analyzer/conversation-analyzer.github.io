@@ -10,7 +10,6 @@
     display: flex;
     max-width: var(--container);
     margin: 0 auto;
-    padding-top: var(--nav-height);
     min-height: 100vh;
 }
 
@@ -82,12 +81,12 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px 16px;
-    margin-bottom: 32px;
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius);
-    background: var(--surface);
-    transition: border-color var(--transition);
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 12px 24px;
+    padding-top: calc(var(--nav-height) + 12px);
+    border-bottom: 1px solid var(--border-light);
+    background: var(--bg);
 }
 
 .docs-search:focus-within {
