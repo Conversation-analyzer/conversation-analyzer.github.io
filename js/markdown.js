@@ -29,6 +29,22 @@ window.MarkdownRenderer = (function () {
         );
     };
 
+    // Custom list renderer — adds docs-list / docs-steps classes
+    renderer.list = function (token) {
+        var ordered = typeof token === "object" ? token.ordered : arguments[1];
+        var items = typeof token === "object" ? token.items : arguments[0];
+        var tag = ordered ? "ol" : "ul";
+        var cls = ordered ? "docs-steps" : "docs-list";
+        var body = "";
+        if (items && items.length) {
+            items.forEach(function (item) {
+                var text = item.tokens ? inlineTokens(item.tokens) : (item.text || "");
+                body += "<li>" + text + "</li>\n";
+            });
+        }
+        return "<" + tag + ' class="' + cls + '">' + body + "</" + tag + ">\n";
+    };
+
     // Custom table renderer — wraps output in docs-table-wrap
     renderer.table = function (header, body) {
         // marked v14+ passes objects { header, rows } or { headers, rows }
