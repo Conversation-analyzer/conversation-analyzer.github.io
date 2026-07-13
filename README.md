@@ -37,13 +37,14 @@ python -m http.server 8080
 ```
 ├── index.html          # Home / landing page
 ├── features.html       # Features detail page
-├── docs.html           # Documentation (placeholder)
+├── docs.html           # Documentation shell
 ├── community.html      # Community hub
 ├── contribution.html   # Contribution guide
 ├── changelog.html      # Release history
 ├── roadmap.html        # Project roadmap
 ├── about.html          # About the project
 ├── 404.html            # Error page
+├── .nojekyll           # Disable Jekyll processing
 ├── css/
 │   ├── tokens.css      # Design tokens (CSS variables)
 │   ├── base.css        # Reset, typography, utilities
@@ -57,12 +58,47 @@ python -m http.server 8080
 │   ├── animations.css  # Scroll reveal, keyframes
 │   └── responsive.css  # Media queries
 ├── js/
-│   ├── config.js        # Site-wide URL configuration (GitHub links, contact)
-│   ├── include.js        # Partial loader & config resolver
-│   └── main.js           # Scroll reveal, counters, rotating text
+│   ├── config.js       # Site-wide URL configuration
+│   ├── include.js      # Partial loader & config resolver
+│   ├── main.js         # Scroll reveal, counters, rotating text
+│   ├── markdown.js     # Markdown-to-HTML renderer
+│   └── docs.js         # Docs sidebar, navigation, search
+├── docs/
+│   ├── sidebar.json    # Docs navigation structure
+│   ├── getting-started/
+│   │   ├── installation.md
+│   │   ├── quick-start.md
+│   │   └── usage.md
+│   ├── parsing/
+│   │   ├── index.md
+│   │   ├── formats.md
+│   │   └── customization.md
+│   ├── visualization/
+│   │   ├── index.md
+│   │   ├── dashboard.md
+│   │   ├── charts.md
+│   │   ├── search.md
+│   │   ├── messages.md
+│   │   └── media.md
+│   ├── understanding-reports/
+│   │   ├── index.md
+│   │   ├── ai-patterns.md
+│   │   ├── communication-styles.md
+│   │   └── topics.md
+│   ├── architecture/
+│   │   ├── index.md
+│   │   ├── components.md
+│   │   ├── data-flow.md
+│   │   └── tech-stack.md
+│   ├── faq/
+│   │   ├── index.md
+│   │   └── troubleshooting.md
+│   └── api/
+│       ├── index.md
+│       └── examples.md
 ├── partials/
-│   ├── header.html     # Background effects + navbar (injected on load)
-│   └── footer.html     # Footer section (injected on load)
+│   ├── header.html     # Background effects + navbar
+│   └── footer.html     # Footer section
 ├── LICENSE             # MIT License
 └── README.md
 ```

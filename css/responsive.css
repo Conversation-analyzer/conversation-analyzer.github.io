@@ -77,14 +77,13 @@
     .cta-buttons .btn { width: 100%; }
 
     /* Docs mobile sidebar dropdown */
-    .docs-layout { display: block; }
+    .docs-layout { display: block; height: auto; margin-top: var(--nav-height); }
     .docs-sidebar { display: none; }
-    .docs-content { padding: calc(var(--nav-height) + 44px + 8px) 16px 60px; }
+    .docs-content { padding: 8px 16px 60px; height: auto; overflow-y: visible; }
 
-    /* Search bar — inside content on mobile */
-    .docs-search {
-        margin-bottom: 20px;
-    }
+    /* Search bar — no extra spacing on mobile */
+    .docs-search { margin-bottom: 0; padding: 10px 14px; }
+    .docs-search kbd { display: none; }
 
     .docs-mobile-bar {
         display: flex;
