@@ -137,9 +137,16 @@
     }
 
     .docs-mobile-dropdown .docs-nav-link {
-        padding: 10px 12px;
+        padding: 10px 12px 10px 24px;
         font-size: 14px;
     }
+
+    /* Docs footer — stack on mobile */
+    .docs-footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .docs-footer .btn { width: 100%; justify-content: center; }
 }
 
 /* ===========================
