@@ -3,7 +3,7 @@
    ========================================================================== */
 
 /* ===========================
-   Responsive
+   Tablet & below (≤ 1024px)
    =========================== */
 
 @media (max-width: 1024px) {
@@ -16,13 +16,23 @@
     .steps-5::before { display: none; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
     .content-grid { grid-template-columns: 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
     .grid-3 { grid-template-columns: repeat(2, 1fr); }
     .grid-4 { grid-template-columns: repeat(2, 1fr); }
     .docs-content { padding: 40px 36px 80px; }
 }
 
+/* ===========================
+   Mobile (≤ 768px)
+   =========================== */
+
 @media (max-width: 768px) {
-    .section { padding: 80px 0; }
+    .section { padding: 60px 0; }
+    .page-header { padding: calc(var(--nav-height) + 40px) 0 40px; }
+    .page-header h1 { font-size: 2rem; }
+    .page-header p { font-size: 0.95rem; }
+
+    /* Nav */
     .nav-links {
         position: fixed;
         top: var(--nav-height);
@@ -41,18 +51,40 @@
     .nav-links a { padding: 14px 24px; border-top: 1px solid var(--border-light); width: 100%; }
     .nav-toggle { display: flex; }
     .btn-github.desktop { display: none; }
+
+    /* Grids — force single column */
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; gap: 30px; }
-    .steps-5 { grid-template-columns: 1fr; gap: 24px; }
+    .steps-5 { grid-template-columns: 1fr; gap: 20px; }
+
+    /* Footer */
     .footer-grid { grid-template-columns: 1fr; gap: 32px; }
     .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+
+    /* Misc */
     .mock-stat-row { grid-template-columns: 1fr; }
+    .section-header { margin-bottom: 40px; }
+    .section-header h2 { font-size: 1.6rem; }
+    .cta-banner { padding: 40px 24px; }
+    .cta-buttons { flex-direction: column; align-items: stretch; }
+    .cta-buttons .btn { width: 100%; }
 }
+
+/* ===========================
+   Small mobile (≤ 480px)
+   =========================== */
 
 @media (max-width: 480px) {
     h1 { letter-spacing: -0.5px; }
+    h2 { font-size: 1.4rem; }
+    .section { padding: 48px 0; }
     .btn { padding: 12px 20px; font-size: 14px; }
-    .card { padding: 24px; }
-    .feature-card { padding: 24px; }
+    .btn-lg { padding: 14px 24px; font-size: 15px; }
+    .card { padding: 20px; }
+    .feature-card { padding: 20px; }
     .timeline-phase { font-size: 11px; }
+    .step-number { width: 44px; height: 44px; font-size: 14px; }
+    .docs-callout { padding: 14px 16px; }
+    .docs-table { font-size: 13px; }
+    .docs-table th, .docs-table td { padding: 10px 12px; }
 }
