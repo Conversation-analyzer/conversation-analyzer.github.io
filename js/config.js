@@ -22,7 +22,7 @@ window.APP_CONFIG = {
 
     /* Maintainer ------------------------------------------------------- */
     maintainer: {
-        name: "NarriGoud",
+        name: "Narendra",
         github: "https://github.com/NarriGoud",
     },
 
