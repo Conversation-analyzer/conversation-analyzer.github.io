@@ -7,14 +7,14 @@ window.APP_CONFIG = {
 
     /* GitHub ----------------------------------------------------------- */
     github: {
-        base:            "https://github.com/Conversation-analyzer/conversation-analyzer.github.io",
-        repo:            "https://github.com/Conversation-analyzer/conversation-analyzer.github.io",
-        issues:          "https://github.com/Conversation-analyzer/conversation-analyzer.github.io/issues",
-        goodFirstIssue:  "https://github.com/Conversation-analyzer/conversation-analyzer.github.io/issues?q=label%3A%22good+first+issue%22",
-        pulls:           "https://github.com/Conversation-analyzer/conversation-analyzer.github.io/pulls",
-        discussions:     "https://github.com/Conversation-analyzer/conversation-analyzer.github.io/discussions",
-        releases:        "https://github.com/Conversation-analyzer/conversation-analyzer.github.io/releases",
-        license:         "https://github.com/Conversation-analyzer/conversation-analyzer.github.io/blob/main/LICENSE",
+        base:            "https://github.com/Conversation-analyzer/ai_conversation_analyzer",
+        repo:            "https://github.com/Conversation-analyzer/ai_conversation_analyzer",
+        issues:          "https://github.com/Conversation-analyzer/ai_conversation_analyzer/issues",
+        goodFirstIssue:  "https://github.com/Conversation-analyzer/ai_conversation_analyzer/issues?q=label%3A%22good+first+issue%22",
+        pulls:           "https://github.com/Conversation-analyzer/ai_conversation_analyzer/pulls",
+        discussions:     "https://github.com/Conversation-analyzer/ai_conversation_analyzer/discussions",
+        releases:        "https://github.com/Conversation-analyzer/ai_conversation_analyzer/releases",
+        license:         "https://github.com/Conversation-analyzer/ai_conversation_analyzer/blob/main/LICENSE",
     },
 
     /* Contact ---------------------------------------------------------- */
