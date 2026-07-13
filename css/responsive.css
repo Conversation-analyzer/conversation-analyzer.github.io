@@ -2,6 +2,9 @@
    AI Conversation Analyzer — Responsive
    ========================================================================== */
 
+/* Hide mobile-only elements on desktop */
+.mobile-only { display: none !important; }
+
 /* ===========================
    Tablet & below (≤ 1024px)
    =========================== */
@@ -51,6 +54,7 @@
     .nav-links a { padding: 14px 24px; border-top: 1px solid var(--border-light); width: 100%; }
     .nav-toggle { display: flex; }
     .btn-github.desktop { display: none; }
+    .mobile-only { display: inline-flex !important; }
 
     /* Grids — force single column */
     .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
