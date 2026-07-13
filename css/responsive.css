@@ -79,14 +79,27 @@
     /* Docs mobile sidebar dropdown */
     .docs-layout { display: block; }
     .docs-sidebar { display: none; }
-    .docs-content { padding-top: calc(48px + 44px); }
+    .docs-content { padding: calc(var(--nav-height) + 48px + 44px + 8px) 16px 60px; }
+
+    /* Search bar — fixed between header and mobile bar */
+    .docs-search {
+        position: fixed;
+        top: calc(var(--nav-height));
+        left: 0; right: 0;
+        z-index: 999;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        margin-bottom: 0;
+    }
 
     .docs-mobile-bar {
         display: flex;
         align-items: center;
         justify-content: space-between;
         position: fixed;
-        top: var(--nav-height);
+        top: calc(var(--nav-height) + 48px);
         left: 0; right: 0;
         z-index: 999;
         padding: 0 20px;
@@ -113,7 +126,7 @@
     .docs-mobile-dropdown {
         display: none;
         position: fixed;
-        top: calc(var(--nav-height) + 44px);
+        top: calc(var(--nav-height) + 48px + 44px);
         left: 0; right: 0;
         z-index: 998;
         max-height: 50vh;
