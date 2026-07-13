@@ -81,14 +81,12 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    max-width: 480px;
-    margin: 0 auto;
-    margin-top: 100px;
-    padding: 14px 18px;
+    margin-bottom: 32px;
+    padding: 12px 16px;
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
     background: var(--surface);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    transition: border-color var(--transition);
 }
 
 .docs-search:focus-within {

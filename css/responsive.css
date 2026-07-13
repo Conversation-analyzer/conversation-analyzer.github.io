@@ -81,14 +81,9 @@
     .docs-sidebar { display: none; }
     .docs-content { padding: calc(var(--nav-height) + 44px + 8px) 16px 60px; }
 
-    /* Search bar — part of flow on mobile */
+    /* Search bar — inside content on mobile */
     .docs-search {
-        position: relative;
-        top: auto;
-        margin: 0 16px;
-        margin-top: calc(var(--nav-height) + 44px + 16px);
-        border-radius: var(--radius);
-        border: 1px solid var(--border-light);
+        margin-bottom: 20px;
     }
 
     .docs-mobile-bar {
