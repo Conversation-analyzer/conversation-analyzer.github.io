@@ -1,182 +1,91 @@
 /**
- * markdown.js — Lightweight Markdown renderer
- * Handles: headings, bold, italic, inline code, fenced code blocks,
- * tables, ordered/unordered lists, links, blockquotes, horizontal rules,
- * and passes through raw HTML.
+ * markdown.js — Markdown renderer using marked.js (CDN)
+ * Wraps marked with custom renderers for code blocks, tables, and lists
+ * to produce the existing docs HTML structure.
  */
 window.MarkdownRenderer = (function () {
     "use strict";
 
-    function escapeHtml(str) {
-        return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    // Custom code block renderer — adds header with language label + copy button
+    var renderer = new marked.Renderer();
+
+    renderer.code = function (code, lang) {
+        // marked v14+ passes an object { text, lang }
+        var text = typeof code === "object" ? code.text : code;
+        var language = typeof code === "object" ? code.lang : lang;
+        var escaped = text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+        var label = language || "code";
+        return (
+            '<div class="docs-code-block">' +
+            '<div class="docs-code-header">' +
+            '<span class="docs-code-lang">' + label + "</span>" +
+            '<button class="docs-copy-btn" data-copy><i class="fa-regular fa-copy"></i></button>' +
+            "</div>" +
+            "<pre><code>" + escaped + "</code></pre></div>\n"
+        );
+    };
+
+    // Custom table renderer — wraps output in docs-table-wrap
+    renderer.table = function (header, body) {
+        // marked v14+ passes objects { header, rows } or { headers, rows }
+        if (typeof header === "object" && header.header !== undefined) {
+            // v14+ object format
+            var hdr = header.header;
+            var rows = header.rows;
+            var h = "<thead><tr>";
+            hdr.forEach(function (cell) {
+                h += "<th>" + (cell.tokens ? inlineTokens(cell.tokens) : cell.text) + "</th>";
+            });
+            h += "</tr></thead>";
+            var b = "<tbody>";
+            rows.forEach(function (row) {
+                b += "<tr>";
+                row.forEach(function (cell) {
+                    b += "<td>" + (cell.tokens ? inlineTokens(cell.tokens) : cell.text) + "</td>";
+                });
+                b += "</tr>";
+            });
+            b += "</tbody>";
+            return '<div class="docs-table-wrap"><table class="docs-table">' + h + b + "</table></div>\n";
+        }
+        // Fallback for older marked versions (string args)
+        return (
+            '<div class="docs-table-wrap"><table class="docs-table"><thead>' +
+            header +
+            "</thead><tbody>" +
+            body +
+            "</tbody></table></div>\n"
+        );
+    };
+
+    function inlineTokens(tokens) {
+        if (!tokens) return "";
+        return tokens
+            .map(function (t) {
+                if (t.type === "text") return t.text || t.raw || "";
+                if (t.type === "strong") return "<strong>" + inlineTokens(t.tokens) + "</strong>";
+                if (t.type === "em") return "<em>" + inlineTokens(t.tokens) + "</em>";
+                if (t.type === "codespan") return "<code>" + (t.text || t.raw) + "</code>";
+                if (t.type === "link") return '<a href="' + t.href + '">' + inlineTokens(t.tokens) + "</a>";
+                if (t.type === "image") return '<img src="' + t.href + '" alt="' + (t.text || "") + '" style="max-width:100%">';
+                return t.raw || t.text || "";
+            })
+            .join("");
     }
 
-    function inline(text) {
-        // inline code (protect from further processing)
-        var codes = [];
-        text = text.replace(/`([^`]+)`/g, function (_, c) {
-            codes.push("<code>" + escapeHtml(c) + "</code>");
-            return "\x00C" + (codes.length - 1) + "\x00";
-        });
-        // images
-        text = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width:100%">');
-        // links
-        text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
-        // bold + italic
-        text = text.replace(/\*\*\*(.+?)\*\*\*/g, "<strong><em>$1</em></strong>");
-        // bold
-        text = text.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
-        text = text.replace(/__(.+?)__/g, "<strong>$1</strong>");
-        // italic
-        text = text.replace(/\*(.+?)\*/g, "<em>$1</em>");
-        text = text.replace(/_(.+?)_/g, "<em>$1</em>");
-        // restore inline code
-        text = text.replace(/\x00C(\d+)\x00/g, function (_, i) { return codes[parseInt(i)]; });
-        return text;
-    }
+    // Configure marked
+    marked.setOptions({
+        renderer: renderer,
+        gfm: true,
+        breaks: false,
+    });
 
     function render(text) {
-        var lines = text.replace(/\r\n/g, "\n").split("\n");
-        var out = [];
-        var i = 0;
-
-        while (i < lines.length) {
-            var line = lines[i];
-
-            // blank line
-            if (line.trim() === "") { i++; continue; }
-
-            // raw HTML (pass through lines that look like HTML tags)
-            if (/^<[a-zA-Z]/.test(line.trim())) {
-                var htmlBlock = [];
-                while (i < lines.length && lines[i].trim() !== "") {
-                    htmlBlock.push(lines[i]);
-                    i++;
-                }
-                out.push(htmlBlock.join("\n"));
-                continue;
-            }
-
-            // fenced code block
-            var fenceMatch = line.match(/^```(\w*)/);
-            if (fenceMatch) {
-                var lang = fenceMatch[1];
-                var codeLines = [];
-                i++;
-                while (i < lines.length && !/^```\s*$/.test(lines[i])) {
-                    codeLines.push(escapeHtml(lines[i]));
-                    i++;
-                }
-                i++; // skip closing fence
-                var langLabel = lang || "code";
-                out.push(
-                    '<div class="docs-code-block">' +
-                    '<div class="docs-code-header"><span class="docs-code-lang">' + langLabel + '</span>' +
-                    '<button class="docs-copy-btn" data-copy><i class="fa-regular fa-copy"></i></button></div>' +
-                    '<pre><code>' + codeLines.join("\n") + '</code></pre></div>'
-                );
-                continue;
-            }
-
-            // heading
-            var headingMatch = line.match(/^(#{1,6})\s+(.+)/);
-            if (headingMatch) {
-                var level = headingMatch[1].length;
-                out.push("<h" + level + ">" + inline(headingMatch[2]) + "</h" + level + ">");
-                i++;
-                continue;
-            }
-
-            // horizontal rule
-            if (/^[-*_]{3,}\s*$/.test(line.trim())) {
-                out.push("<hr>");
-                i++;
-                continue;
-            }
-
-            // blockquote
-            if (/^>\s?/.test(line)) {
-                var bqLines = [];
-                while (i < lines.length && /^>\s?/.test(lines[i])) {
-                    bqLines.push(lines[i].replace(/^>\s?/, ""));
-                    i++;
-                }
-                out.push("<blockquote>" + inline(bqLines.join("\n")) + "</blockquote>");
-                continue;
-            }
-
-            // table
-            if (line.indexOf("|") !== -1 && i + 1 < lines.length && /^\|?\s*[-:]+[-|:\s]+\s*\|?/.test(lines[i + 1])) {
-                var tableLines = [];
-                while (i < lines.length && lines[i].indexOf("|") !== -1) {
-                    tableLines.push(lines[i]);
-                    i++;
-                }
-                out.push(renderTable(tableLines));
-                continue;
-            }
-
-            // unordered list
-            if (/^[\-\*\+]\s+/.test(line)) {
-                var ulItems = [];
-                while (i < lines.length && /^[\-\*\+]\s+/.test(lines[i])) {
-                    ulItems.push("<li>" + inline(lines[i].replace(/^[\-\*\+]\s+/, "")) + "</li>");
-                    i++;
-                }
-                out.push("<ul class='docs-list'>" + ulItems.join("") + "</ul>");
-                continue;
-            }
-
-            // ordered list
-            if (/^\d+\.\s+/.test(line)) {
-                var olItems = [];
-                while (i < lines.length && /^\d+\.\s+/.test(lines[i])) {
-                    olItems.push("<li>" + inline(lines[i].replace(/^\d+\.\s+/, "")) + "</li>");
-                    i++;
-                }
-                out.push("<ol class='docs-steps'>" + olItems.join("") + "</ol>");
-                continue;
-            }
-
-            // paragraph (collect consecutive non-empty, non-special lines)
-            var paraLines = [];
-            while (
-                i < lines.length &&
-                lines[i].trim() !== "" &&
-                !/^(#{1,6}\s|```|>\s?|[-*_]{3,}\s*$)/.test(lines[i]) &&
-                !/^[<]/.test(lines[i].trim()) &&
-                !/^\d+\.\s+/.test(lines[i]) &&
-                !/^[\-\*\+]\s+/.test(lines[i])
-            ) {
-                paraLines.push(lines[i]);
-                i++;
-            }
-            if (paraLines.length) {
-                out.push("<p>" + inline(paraLines.join(" ")) + "</p>");
-            }
-        }
-
-        return out.join("\n");
-    }
-
-    function renderTable(lines) {
-        if (lines.length < 2) return "";
-        var parseRow = function (row) {
-            return row.replace(/^\|/, "").replace(/\|$/, "").split("|").map(function (c) { return c.trim(); });
-        };
-        var headers = parseRow(lines[0]);
-        // skip separator line (lines[1])
-        var rows = lines.slice(2).map(parseRow);
-        var html = '<div class="docs-table-wrap"><table class="docs-table"><thead><tr>';
-        headers.forEach(function (h) { html += "<th>" + inline(h) + "</th>"; });
-        html += "</tr></thead><tbody>";
-        rows.forEach(function (row) {
-            html += "<tr>";
-            row.forEach(function (cell) { html += "<td>" + inline(cell) + "</td>"; });
-            html += "</tr>";
-        });
-        html += "</tbody></table></div>";
-        return html;
+        return marked.parse(text);
     }
 
     return { render: render };
