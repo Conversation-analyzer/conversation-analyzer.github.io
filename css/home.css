@@ -425,14 +425,11 @@
     box-shadow: var(--shadow);
 }
 
-.screenshot-placeholder {
+.screenshot-card img {
+    width: 100%;
     aspect-ratio: 16/10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--surface-2), var(--surface-3));
-    font-size: 2.5rem;
-    opacity: 0.4;
+    object-fit: cover;
+    display: block;
 }
 
 .screenshot-caption {
