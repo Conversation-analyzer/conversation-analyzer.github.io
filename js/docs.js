@@ -1,6 +1,6 @@
 /**
  * docs.js — Documentation page controller
- * Loads _sidebar.json, renders sidebar, fetches + renders markdown files,
+ * Loads sidebar.json, renders sidebar, fetches + renders markdown files,
  * manages URL state, and initializes docs-specific interactivity.
  */
 (function () {
@@ -39,11 +39,10 @@
     }
 
     /* ------------------------------------------------
-       Sidebar renderer
+       Sidebar renderer (desktop + mobile dropdown)
        ------------------------------------------------ */
 
-    function renderSidebar(data) {
-        var sidebar = document.getElementById("docs-sidebar");
+    function buildSidebarNav(data) {
         var nav = document.createElement("nav");
         nav.className = "docs-nav";
 
@@ -65,6 +64,7 @@
                 link.addEventListener("click", function (e) {
                     e.preventDefault();
                     navigateTo(item.file);
+                    closeMobileDocsNav();
                 });
                 group.appendChild(link);
             });
@@ -72,8 +72,23 @@
             nav.appendChild(group);
         });
 
-        sidebar.innerHTML = "";
-        sidebar.appendChild(nav);
+        return nav;
+    }
+
+    function renderSidebar(data) {
+        // Desktop sidebar
+        var sidebar = document.getElementById("docs-sidebar");
+        if (sidebar) {
+            sidebar.innerHTML = "";
+            sidebar.appendChild(buildSidebarNav(data));
+        }
+
+        // Mobile dropdown
+        var dropdown = document.querySelector(".docs-mobile-dropdown");
+        if (dropdown) {
+            dropdown.innerHTML = "";
+            dropdown.appendChild(buildSidebarNav(data));
+        }
     }
 
     /* ------------------------------------------------
@@ -100,6 +115,22 @@
     }
 
     /* ------------------------------------------------
+       Mobile bar text
+       ------------------------------------------------ */
+
+    function updateMobileBarText(file) {
+        var barText = document.getElementById("docs-mobile-bar-text");
+        if (!barText || !sidebarData) return;
+        sidebarData.sections.forEach(function (section) {
+            section.items.forEach(function (item) {
+                if (item.file === file) {
+                    barText.textContent = section.title + " \u203A " + item.title;
+                }
+            });
+        });
+    }
+
+    /* ------------------------------------------------
        Navigation
        ------------------------------------------------ */
 
@@ -115,11 +146,11 @@
             hideLoading();
             updateActiveLink(file);
             updateEditLink(file);
+            updateMobileBarText(file);
             pushState(file);
             initDocsTabs();
             initDocsCopy();
             if (typeof window.initReveal === "function") window.initReveal();
-            window.scrollTo(0, 0);
         });
     }
 
@@ -185,6 +216,44 @@
     }
 
     /* ------------------------------------------------
+       Mobile docs nav
+       ------------------------------------------------ */
+
+    function initMobileDocsNav() {
+        var bar = document.getElementById("docs-mobile-bar");
+        var dropdown = document.querySelector(".docs-mobile-dropdown");
+        if (!bar || !dropdown) return;
+
+        // Toggle dropdown on bar click
+        bar.addEventListener("click", function (e) {
+            e.stopPropagation();
+            var open = dropdown.classList.toggle("open");
+            bar.classList.toggle("open", open);
+            // Close main hamburger if open
+            var toggle = document.querySelector(".nav-toggle");
+            var navLinks = document.querySelector(".nav-links");
+            if (open && navLinks && navLinks.classList.contains("open")) {
+                navLinks.classList.remove("open");
+                if (toggle) toggle.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        // Close on click outside
+        document.addEventListener("click", function (e) {
+            if (!bar.contains(e.target) && !dropdown.contains(e.target)) {
+                closeMobileDocsNav();
+            }
+        });
+    }
+
+    function closeMobileDocsNav() {
+        var bar = document.getElementById("docs-mobile-bar");
+        var dropdown = document.querySelector(".docs-mobile-dropdown");
+        if (dropdown) dropdown.classList.remove("open");
+        if (bar) bar.classList.remove("open");
+    }
+
+    /* ------------------------------------------------
        Resolve data-github / data-email in rendered content
        ------------------------------------------------ */
 
@@ -221,6 +290,7 @@
         fetchJSON(SIDEBAR_URL, function (data) {
             sidebarData = data;
             renderSidebar(data);
+            initMobileDocsNav();
 
             var doc = getDocParam() || data.sections[0].items[0].file;
             navigateTo(doc);
