@@ -179,9 +179,10 @@
             initDocsCopy();
             initPrevNext();
             resolveLinks(inner);
-            // Scroll content to top
+            // Scroll content to top (desktop) and window to top (mobile)
             var content = document.getElementById("docs-content");
             if (content) content.scrollTop = 0;
+            window.scrollTo(0, 0);
             if (typeof window.initReveal === "function") window.initReveal();
         });
     }
