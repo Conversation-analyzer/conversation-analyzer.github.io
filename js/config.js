@@ -20,4 +20,10 @@ window.APP_CONFIG = {
     /* Contact ---------------------------------------------------------- */
     email: "chnrndr3@email.com",
 
+    /* Maintainer ------------------------------------------------------- */
+    maintainer: {
+        name: "NarriGoud",
+        github: "https://github.com/NarriGoud",
+    },
+
 };
