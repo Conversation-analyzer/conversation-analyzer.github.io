@@ -62,8 +62,11 @@
     .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
 
     /* Code blocks */
-    .card pre { max-width: 100%; overflow-x: auto; font-size: 12px; }
+    .card pre { max-width: 100% !important; overflow-x: auto !important; font-size: 12px !important; }
     .code-block { font-size: 12px; }
+
+    /* Prevent sections from overflowing viewport */
+    .section { overflow-x: hidden; }
 
     /* Misc */
     .mock-stat-row { grid-template-columns: 1fr; }
@@ -85,7 +88,7 @@
     .btn { padding: 12px 20px; font-size: 14px; }
     .btn-lg { padding: 14px 24px; font-size: 15px; }
     .card { padding: 20px; }
-    .card pre { padding: 12px; font-size: 11px; }
+    .card pre { padding: 12px !important; font-size: 11px !important; }
     .feature-card { padding: 20px; }
     .timeline-phase { font-size: 11px; }
     .step-number { width: 44px; height: 44px; font-size: 14px; }
