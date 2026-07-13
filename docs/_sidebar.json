@@ -1,0 +1,68 @@
+{
+  "sections": [
+    {
+      "title": "Getting Started",
+      "items": [
+        { "title": "Introduction", "file": "getting-started/introduction.md" },
+        { "title": "Installation", "file": "getting-started/installation.md" },
+        { "title": "Quick Start", "file": "getting-started/quick-start.md" },
+        { "title": "First Analysis", "file": "getting-started/first-analysis.md" }
+      ]
+    },
+    {
+      "title": "Importing Data",
+      "items": [
+        { "title": "Upload JSON", "file": "importing-data/upload-json.md" },
+        { "title": "Demo Session", "file": "importing-data/demo-session.md" },
+        { "title": "Connect OpenCode", "file": "importing-data/connect-opencode.md" },
+        { "title": "Live Polling", "file": "importing-data/live-polling.md" }
+      ]
+    },
+    {
+      "title": "Configuration",
+      "items": [
+        { "title": "App Settings", "file": "configuration/app-settings.md" },
+        { "title": "Backend Config", "file": "configuration/backend-config.md" },
+        { "title": "Supported Backends", "file": "configuration/supported-backends.md" }
+      ]
+    },
+    {
+      "title": "Understanding Reports",
+      "items": [
+        { "title": "Overview", "file": "understanding-reports/overview.md" },
+        { "title": "Timeline", "file": "understanding-reports/timeline.md" },
+        { "title": "Token Usage", "file": "understanding-reports/token-usage.md" },
+        { "title": "Tool Calls", "file": "understanding-reports/tool-calls.md" },
+        { "title": "Reasoning", "file": "understanding-reports/reasoning.md" },
+        { "title": "Models", "file": "understanding-reports/models.md" },
+        { "title": "Costs", "file": "understanding-reports/costs.md" },
+        { "title": "Insights", "file": "understanding-reports/insights.md" }
+      ]
+    },
+    {
+      "title": "Architecture",
+      "items": [
+        { "title": "Overview", "file": "architecture/overview.md" },
+        { "title": "Parser", "file": "architecture/parser.md" },
+        { "title": "Extractor", "file": "architecture/extractor.md" },
+        { "title": "Renderer", "file": "architecture/renderer.md" },
+        { "title": "ConversationSpec", "file": "architecture/conversation-spec.md" }
+      ]
+    },
+    {
+      "title": "API Reference",
+      "items": [
+        { "title": "Parser", "file": "api/parser.md" },
+        { "title": "Extractors", "file": "api/extractors.md" },
+        { "title": "Connectors", "file": "api/connectors.md" },
+        { "title": "Datasource", "file": "api/datasource.md" }
+      ]
+    },
+    {
+      "title": "Resources",
+      "items": [
+        { "title": "FAQ", "file": "faq.md" }
+      ]
+    }
+  ]
+}

@@ -32,6 +32,9 @@
         els.forEach(el => observer.observe(el));
     }
 
+    // Expose for docs.js to call after dynamic content load
+    window.initReveal = initReveal;
+
     /* ==========================================================
        Animated Counters
     ========================================================== */
@@ -119,79 +122,6 @@
     }
 
     /* ==========================================================
-       Docs — Sidebar Scroll Spy
-    ========================================================== */
-
-    function initDocsScrollSpy() {
-        const links = document.querySelectorAll(".docs-nav-link");
-        if (!links.length) return;
-
-        const sections = [];
-        links.forEach(link => {
-            const id = link.getAttribute("href").slice(1);
-            const section = document.getElementById(id);
-            if (section) sections.push({ id, link, el: section });
-        });
-
-        if (!sections.length) return;
-
-        let ticking = false;
-        function onScroll() {
-            if (ticking) return;
-            ticking = true;
-            requestAnimationFrame(() => {
-                let active = sections[0];
-                const offset = window.scrollY + 120;
-                for (const s of sections) {
-                    if (s.el.offsetTop <= offset) active = s;
-                }
-                links.forEach(l => l.classList.remove("active"));
-                active.link.classList.add("active");
-                ticking = false;
-            });
-        }
-
-        window.addEventListener("scroll", onScroll, { passive: true });
-        onScroll();
-    }
-
-    /* ==========================================================
-       Docs — Tab Panels
-    ========================================================== */
-
-    function initDocsTabs() {
-        document.querySelectorAll(".docs-tab-btn").forEach(btn => {
-            btn.addEventListener("click", () => {
-                const group = btn.closest(".docs-tabs");
-                const target = btn.dataset.tab;
-
-                group.querySelectorAll(".docs-tab-btn").forEach(b => b.classList.remove("active"));
-                group.querySelectorAll(".docs-tab-panel").forEach(p => p.classList.remove("active"));
-
-                btn.classList.add("active");
-                group.querySelector(`[data-tab-panel="${target}"]`).classList.add("active");
-            });
-        });
-    }
-
-    /* ==========================================================
-       Docs — Code Copy Buttons
-    ========================================================== */
-
-    function initDocsCopy() {
-        document.querySelectorAll("[data-copy]").forEach(btn => {
-            btn.addEventListener("click", () => {
-                const code = btn.closest(".docs-code-block").querySelector("code");
-                if (!code) return;
-                navigator.clipboard.writeText(code.textContent).then(() => {
-                    btn.innerHTML = '<i class="fa-solid fa-check"></i>';
-                    setTimeout(() => { btn.innerHTML = '<i class="fa-regular fa-copy"></i>'; }, 1500);
-                });
-            });
-        });
-    }
-
-    /* ==========================================================
        Boot
     ========================================================== */
 
@@ -199,9 +129,6 @@
         initReveal();
         initCounters();
         initBarFills();
-        initDocsScrollSpy();
-        initDocsTabs();
-        initDocsCopy();
 
         initRotator("[data-rotate]", [
             "31,284 tokens analyzed",
