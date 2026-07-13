@@ -55,6 +55,17 @@
     .nav-toggle { display: flex; }
     .btn-github.desktop { display: none; }
     .mobile-only { display: inline-flex !important; }
+    .nav-mobile-actions {
+        display: flex;
+        gap: 10px;
+        padding: 16px 24px;
+        border-top: 1px solid var(--border-light);
+    }
+    .nav-mobile-actions .btn-github {
+        flex: 1;
+        justify-content: center;
+        padding: 12px 16px;
+    }
 
     /* Grids — force single column */
     .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
