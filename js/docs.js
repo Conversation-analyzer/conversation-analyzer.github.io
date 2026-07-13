@@ -6,8 +6,8 @@
 (function () {
     "use strict";
 
-    var SIDEBAR_URL = "docs/_sidebar.json";
-    var DOCS_DIR    = "docs/";
+    var SIDEBAR_URL = "/docs/_sidebar.json";
+    var DOCS_DIR    = "/docs/";
     var config      = window.APP_CONFIG || {};
     var sidebarData = null;
     var currentFile = null;
