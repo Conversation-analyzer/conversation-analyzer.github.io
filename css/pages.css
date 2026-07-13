@@ -160,6 +160,45 @@
 .docs-search-empty { padding: 16px; text-align: center; color: var(--muted); font-size: 14px; }
 
 /* ===========================
+   Docs — Rendered Markdown Content
+   =========================== */
+
+#docs-content-inner h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; margin: 0 0 16px; line-height: 1.2; }
+#docs-content-inner h2 { font-size: 1.5rem; font-weight: 700; margin: 40px 0 12px; line-height: 1.25; }
+#docs-content-inner h3 { font-size: 1.2rem; font-weight: 600; margin: 32px 0 10px; line-height: 1.3; }
+#docs-content-inner h4 { font-size: 1.05rem; font-weight: 600; margin: 28px 0 8px; }
+
+#docs-content-inner p { margin-bottom: 16px; line-height: 1.75; color: var(--text-secondary); }
+
+#docs-content-inner ul,
+#docs-content-inner ol { margin-bottom: 16px; padding-left: 24px; }
+#docs-content-inner ul { list-style: disc; }
+#docs-content-inner ol { list-style: decimal; }
+#docs-content-inner li { margin-bottom: 8px; line-height: 1.7; color: var(--text-secondary); }
+#docs-content-inner li:last-child { margin-bottom: 0; }
+
+#docs-content-inner blockquote {
+    margin: 20px 0;
+    padding: 16px 20px;
+    border-left: 3px solid var(--primary);
+    background: var(--primary-bg);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    color: var(--text-secondary);
+}
+#docs-content-inner blockquote p { margin-bottom: 0; }
+
+#docs-content-inner hr { margin: 32px 0; border: none; border-top: 1px solid var(--border-light); }
+
+#docs-content-inner pre { margin-bottom: 20px; }
+#docs-content-inner pre code { display: block; }
+
+#docs-content-inner table { margin-bottom: 20px; }
+
+#docs-content-inner img { margin: 20px 0; border-radius: var(--radius); }
+
+#docs-content-inner strong { font-weight: 600; color: var(--text); }
+
+/* ===========================
    Docs Page — Sections
    =========================== */
 
