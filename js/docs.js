@@ -141,9 +141,8 @@
 
         fetchText(DOCS_DIR + file, function (md) {
             var html = window.MarkdownRenderer.render(md);
-            var content = document.getElementById("docs-content");
-            content.innerHTML = html + buildDocsFooter();
-            hideLoading();
+            var inner = document.getElementById("docs-content-inner");
+            inner.innerHTML = html + buildDocsFooter();
             updateActiveLink(file);
             updateEditLink(file);
             updateMobileBarText(file);
@@ -172,7 +171,7 @@
        ------------------------------------------------ */
 
     function showLoading() {
-        var el = document.getElementById("docs-content");
+        var el = document.getElementById("docs-content-inner");
         el.innerHTML = '<div class="docs-loading"><i class="fa-solid fa-spinner fa-spin"></i><p>Loading...</p></div>';
     }
 
