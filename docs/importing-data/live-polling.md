@@ -9,7 +9,7 @@ Monitor an ongoing AI conversation in real time. Live polling fetches new data f
     <span class="docs-step-num">1</span>
     <div>
       <strong>Connect to a backend first</strong>
-      <p>Use the Connect button to establish a connection to your OpenCode instance. See [Connect to OpenCode](/docs?doc=importing-data/connect-opencode) for details.</p>
+      <p>Use the Connect button to establish a connection to your OpenCode instance. See <a href="/docs?doc=importing-data/connect-opencode">Connect to OpenCode</a> for details.</p>
     </div>
   </li>
   <li>
