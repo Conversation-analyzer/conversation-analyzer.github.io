@@ -15,17 +15,11 @@ Everything runs client-side. No data leaves your browser, no server-side install
 ### What You Can Do
 
 - **Upload** a session JSON file or **connect** to a live OpenCode backend
-
 - **Explore** conversations turn-by-turn with expandable message details
-
 - **Inspect** every tool call — name, input, output, duration, status
-
 - **Analyze** token distribution, latency percentiles, reasoning chains, and cost
-
 - **Compare** sessions side-by-side with radar charts
-
 - **Track** context accumulation across long conversations
-
 - **Monitor** live sessions with 4-second auto-refresh polling
 
 ### Supported Backends
@@ -47,11 +41,8 @@ Session JSON → Parser → ConversationSpec → Extractors → Renderer/Charts
 The app follows a clean pipeline:
 
 1. **Parser** converts raw backend-specific JSON into the normalized [ConversationSpec](/docs?doc=architecture/conversation-spec) format
-
 2. **Extractors** pull specific slices (session info, metrics, messages, tools, timeline) from the normalized model
-
 3. **Renderers** generate HTML for each tab (Overview, Timeline, Messages, Tools, Insights)
-
 4. **Charts** render interactive Plotly visualizations for the Insights tab
 
 ### Tech Stack
@@ -69,8 +60,6 @@ The app follows a clean pipeline:
 
 <ul class="docs-list">
   <li><i class="fa-solid fa-check"></i> A modern browser (Chrome, Edge, Firefox, or Safari)</li>
-
   <li><i class="fa-solid fa-check"></i> A local HTTP server (the app uses ES modules and cannot run from <code>file://</code>)</li>
-
   <li><i class="fa-solid fa-check"></i> A session JSON file in OpenCode format, or a running OpenCode instance</li>
 </ul>

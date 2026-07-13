@@ -12,7 +12,6 @@ Use any of these methods from the project root:
     <button class="docs-tab-btn" data-tab="node">Node.js</button>
     <button class="docs-tab-btn" data-tab="php">PHP</button>
   </div>
-
   <div class="docs-tab-panel active" data-tab-panel="python">
     <div class="docs-code-block">
       <div class="docs-code-header">
@@ -22,7 +21,6 @@ Use any of these methods from the project root:
       <pre><code>python -m http.server 8080</code></pre>
     </div>
   </div>
-
   <div class="docs-tab-panel" data-tab-panel="node">
     <div class="docs-code-block">
       <div class="docs-code-header">
@@ -32,7 +30,6 @@ Use any of these methods from the project root:
       <pre><code>npx serve .</code></pre>
     </div>
   </div>
-
   <div class="docs-tab-panel" data-tab-panel="php">
     <div class="docs-code-block">
       <div class="docs-code-header">
@@ -59,19 +56,14 @@ Click the **Load Mock Demo Session** button on the Overview tab. This loads a bu
 **Option B — Upload a JSON File**
 
 1. Click the **Upload** button in the top navigation bar
-
 2. Select a `.json` file exported from OpenCode
-
 3. The app parses and loads it immediately
 
 **Option C — Connect to a Live Backend**
 
 1. Make sure your OpenCode instance is running
-
 2. Click **Connect** in the top navigation bar
-
 3. Select your backend from the picker modal
-
 4. Enter a session ID (or leave blank to fetch the latest session)
 
 <div class="docs-callout docs-callout-note">

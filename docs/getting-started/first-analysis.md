@@ -13,29 +13,21 @@ The Overview tab shows four cards:
 **Session Card**
 
 - **Session ID** — unique identifier for this conversation
-
 - **Source** — the backend that produced it (e.g. `opencode`)
-
 - **Agent** — the AI agent name (e.g. `build`)
-
 - **Model** — the language model used (e.g. `big-pickle`)
-
 - **Provider** — the API provider
-
 - **Timestamps** — when the session started and completed
 
 **Summary Card**
 
 - **Total Messages** — count of all messages (user + assistant)
-
 - **Total Tools** — count of tool calls made by the assistant
-
 - **Token Breakdown** — input, output, and reasoning token counts
 
 **Metrics Card**
 
 - **Cache Read / Write** — tokens served from cache vs. fresh generation
-
 - **Cost** — estimated API cost for the session (if reported by the backend)
 
 **Health Score**
@@ -43,15 +35,12 @@ The Overview tab shows four cards:
 A 0–100 score based on:
 
 - **Tool error rate** — failed tool calls reduce the score (60% weight)
-
 - **Reasoning share** — excessive reasoning relative to output reduces the score (40% weight)
 
 The ring visualization shows the score with a color:
 
 - **Healthy** (green) — score > 70
-
 - **Degraded** (yellow) — score 40–70
-
 - **Critical** (red) — score < 40
 
 ### Timeline Tab
@@ -59,11 +48,8 @@ The ring visualization shows the score with a color:
 The Timeline tab shows every event in chronological order:
 
 - **Messages** (teal) — user prompts and assistant responses
-
 - **Reasoning** (violet) — model reasoning/thinking steps
-
 - **Tool Starts** (amber) — when a tool call begins
-
 - **Tool Ends** (coral) — when a tool call completes
 
 **Filter chips** at the top let you toggle visibility of each event type. Click a chip to hide or show that category.
@@ -77,31 +63,20 @@ Messages are grouped into **conversation turns** — a user message followed by 
 The AG Grid table shows:
 
 - **Turn number** — sequential count
-
 - **Agent** — which agent handled the turn
-
 - **User** — preview of the user's message
-
 - **Assistant** — preview of the assistant's response
-
 - **Msgs** — number of messages in the turn
-
 - **Tools** — number of tool calls in the turn
-
 - **Tokens** — approximate token count (estimated by character count proportion)
-
 - **Timestamp** — when the turn started
 
 **Click any row** to open the detail panel, which shows:
 
 - Full conversation turn with badge
-
 - Per-turn statistics
-
 - Token distribution pills
-
 - All messages with role badges, latency tags, and meta tags (agent/model/provider)
-
 - Expandable text, reasoning, and tool card sections
 
 ### Tools Tab
@@ -111,21 +86,15 @@ The Tools tab lists every tool call across the entire session.
 The AG Grid table shows:
 
 - **Tool name** — e.g. `readFile`, `writeFile`, `bash`
-
 - **Duration** — wall-clock execution time in milliseconds
-
 - **Input** — truncated preview of the input parameters
-
 - **Output** — truncated preview of the output
-
 - **Status** — `success` or `error`
 
 **Click any row** to open the detail panel with:
 
 - Full tool name and status badge
-
 - Duration
-
 - Collapsible input/output JSON (click to expand)
 
 ### Insights Tab
