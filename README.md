@@ -8,7 +8,7 @@ The official website and documentation for [AI Conversation Analyzer](https://co
 |------|-------------|
 | [Home](index.html) | Landing page with hero, features, how it works, screenshots, and community |
 | [Features](features.html) | Detailed breakdown of every capability |
-| [Docs](docs.html) | Documentation hub (currently being written) |
+| [Docs](docs.html) | Documentation with sidebar navigation — getting started, config, API reference, FAQ |
 | [Community](community.html) | Community links, contribution guide, code of conduct |
 | [Contribution](contribution.html) | Step-by-step guide for contributors |
 | [Changelog](changelog.html) | Release history and upcoming changes |
@@ -63,6 +63,7 @@ python -m http.server 8080
 ├── partials/
 │   ├── header.html     # Background effects + navbar (injected on load)
 │   └── footer.html     # Footer section (injected on load)
+├── LICENSE             # MIT License
 └── README.md
 ```
 

@@ -12,6 +12,8 @@
     .hero-buttons { justify-content: center; }
     .steps { grid-template-columns: repeat(2, 1fr); }
     .steps::before { display: none; }
+    .steps-5 { grid-template-columns: repeat(3, 1fr); }
+    .steps-5::before { display: none; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
     .content-grid { grid-template-columns: 1fr; }
     .grid-3 { grid-template-columns: repeat(2, 1fr); }
@@ -40,6 +42,7 @@
     .nav-toggle { display: flex; }
     .btn-github.desktop { display: none; }
     .steps { grid-template-columns: 1fr; gap: 30px; }
+    .steps-5 { grid-template-columns: 1fr; gap: 24px; }
     .footer-grid { grid-template-columns: 1fr; gap: 32px; }
     .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
     .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
@@ -51,7 +54,5 @@
     .btn { padding: 12px 20px; font-size: 14px; }
     .card { padding: 24px; }
     .feature-card { padding: 24px; }
-    .docs-coming-soon { grid-template-columns: 1fr; }
-    .docs-section-card { flex-wrap: wrap; }
     .timeline-phase { font-size: 11px; }
 }
