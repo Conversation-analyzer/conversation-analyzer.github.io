@@ -40,6 +40,12 @@
       ]
     },
     {
+      "title": "Providers",
+      "items": [
+        { "title": "OpenCode", "file": "providers/opencode.md" }
+      ]
+    },
+    {
       "title": "Architecture",
       "items": [
         { "title": "Overview", "file": "architecture/overview.md" },

@@ -1,6 +1,6 @@
 ## Live Polling
 
-Monitor an ongoing AI conversation in real time. Live polling fetches new data from the backend every 4 seconds and updates the dashboard without a full page reload.
+Monitor an ongoing AI conversation in real time. Live polling fetches new data from the backend every 4 seconds and updates the dashboard without a full page reload. All requests travel through the dashboard proxy on `4474`, which forwards them to OpenCode on `4472`.
 
 ### How to Enable
 
@@ -23,7 +23,7 @@ Monitor an ongoing AI conversation in real time. Live polling fetches new data f
     <span class="docs-step-num">3</span>
     <div>
       <strong>Watch the dashboard update</strong>
-      <p>Every 4 seconds, the app fetches the latest messages from the backend and updates the relevant tabs.</p>
+      <p>Every 4 seconds, the app fetches the latest messages through the proxy and updates the relevant tabs.</p>
     </div>
   </li>
 </ol>
@@ -44,7 +44,7 @@ The Overview and Insights tabs do **not** auto-update during live polling — th
 
 The polling loop:
 
-1. Calls `GET /session/{id}/message` on the backend every 4 seconds
+1. Calls `GET /api/session/{id}/message` (proxied to OpenCode `/session/{id}/message`) every 4 seconds
 2. Parses the response through the OpenCode parser
 3. Compares with the current state
 4. Updates the grid data in place (no DOM teardown)
@@ -59,13 +59,13 @@ Click the **Live** button again to stop polling. The button returns to its norma
   <i class="fa-solid fa-triangle-exclamation"></i>
   <div>
     <strong>Network Traffic</strong>
-    <p>Live polling sends one HTTP request every 4 seconds. If your backend is on a remote server, this adds consistent network traffic. The requests are lightweight (just fetching message JSON), but be aware if you're on a metered connection.</p>
+    <p>Live polling sends one HTTP request every 4 seconds through the dashboard proxy. If your backend is on a remote server, this adds consistent network traffic. The requests are lightweight (just fetching message JSON), but be aware if you're on a metered connection.</p>
   </div>
 </div>
 
 ### Polling Interval
 
-The default interval is 4 seconds (`LIVE_POLL_MS = 4000`). This is hardcoded in `js/app.js`. To change it, modify the constant and reload the page.
+The default interval is 4 seconds (`LIVE_POLL_MS = 4000`). This is hardcoded in `frontend/js/app.js`. To change it, modify the constant and reload the page.
 
 A shorter interval (1–2 seconds) gives more responsive updates but increases load on the backend. A longer interval (5–10 seconds) reduces traffic but feels less real-time.
 

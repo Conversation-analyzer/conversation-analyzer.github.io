@@ -1,6 +1,6 @@
 ## App Settings
 
-Application-level defaults are stored in `config/analyzer.json`. These control the initial state of the dashboard when the app loads.
+Application-level defaults are stored in `frontend/config/analyzer.json`. These control the initial state of the dashboard when the app loads.
 
 ### Configuration File
 
@@ -42,7 +42,7 @@ Application-level defaults are stored in `config/analyzer.json`. These control t
 
 ### How Theme Works
 
-The theme system uses CSS custom properties (variables) defined in `css/style.css`. When the app loads:
+The theme system uses CSS custom properties (variables) defined in `frontend/css/style.css`. When the app loads:
 
 1. `getStoredTheme()` checks <code>localStorage</code> for a <code>ca-theme</code> key
 2. If found, that theme is applied. If not, the <code>theme</code> value from <code>analyzer.json</code> is used
@@ -60,7 +60,7 @@ AG Grid automatically adapts via theme class switching (<code>ag-theme-quartz</c
 
 ### How Default Tab Works
 
-The <code>defaultTab</code> value is used by <code>app.js</code> during initialization. It sets <code>state.activeTab</code> before any data is loaded, so the empty state renders in the correct tab view.
+The <code>defaultTab</code> value is used by <code>frontend/js/app.js</code> during initialization. It sets <code>state.activeTab</code> before any data is loaded, so the empty state renders in the correct tab view.
 
 Once the user clicks a tab, their choice is stored in <code>state.activeTab</code> for the rest of the session. The <code>defaultTab</code> config only affects the initial load.
 
@@ -68,6 +68,6 @@ Once the user clicks a tab, their choice is stored in <code>state.activeTab</cod
   <i class="fa-solid fa-circle-info"></i>
   <div>
     <strong>File Location</strong>
-    <p>The config file is at <code>config/analyzer.json</code> relative to the project root. It's loaded by <code>config/loader.js</code> via <code>loadConfig("analyzer")</code>.</p>
+    <p>The config file is at <code>frontend/config/analyzer.json</code> (it ships inside the published npm package). It's loaded by <code>frontend/config/loader.js</code> via <code>loadConfig("analyzer")</code>.</p>
   </div>
 </div>

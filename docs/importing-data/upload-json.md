@@ -10,7 +10,7 @@ The upload handler creates a hidden file input, opens the system file picker, an
 Your JSON file → Parser → ConversationSpec → Extractors → Dashboard
 ```
 
-The parser validates that the input is an array of message objects. If the file is malformed or not in a supported format, the upload will silently fail.
+The parser validates that the input is an array of message objects. If the file is malformed or not in a supported format, the app shows an error message and leaves the current session intact rather than failing silently.
 
 ### Step-by-Step
 
@@ -46,7 +46,7 @@ From each message in your JSON, the parser pulls:
 |-------|-------------|
 | Session ID | Unique identifier from the first message |
 | Agent name | Which AI agent handled the conversation |
-| Model | The language model used (e.g. `big-pickle`) |
+| Model | The language model used |
 | Provider | The API provider (e.g. `opencode`) |
 | Timestamps | Start and completion times |
 | Tokens | Input, output, reasoning, cache read/write counts |
@@ -75,4 +75,4 @@ Planned formats will be added as new parsers are implemented. The normalized [Co
 
 ### File Size
 
-The app handles large sessions well. The bundled demo session is ~66K lines of JSON and loads in under a second. Very large sessions (100K+ messages) may take a moment to parse and render, but the grid and chart libraries handle virtualization efficiently.
+The app handles large sessions well. The bundled demo session is about 1 MB (trimmed for shipping) and loads in under a second. Very large sessions (100K+ messages) may take a moment to parse and render, but the grid and chart libraries handle virtualization efficiently.

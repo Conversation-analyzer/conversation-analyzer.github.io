@@ -1,10 +1,10 @@
 ## Demo Session
 
-The fastest way to explore AI Conversation Analyzer — no files, no backend, just click and go.
+The fastest way to explore AI Conversation Analyzer — no backend, no file export, just click and go. The demo is bundled with the npm package, so it works the moment you start the dashboard.
 
 ### What Is It
 
-The demo session is a bundled OpenCode conversation stored at `sample/demo_session.json` inside the project. It contains a realistic coding session with:
+The demo session is a bundled OpenCode conversation stored at `frontend/sample/demo_session.json` inside the package. It has been trimmed to roughly 1 MB so it ships cleanly in the published package while still containing a realistic coding session:
 
 - Multiple conversation turns (user prompts and assistant responses)
 - Tool calls (file reads, writes, bash commands)
@@ -21,7 +21,7 @@ It's a complete, self-contained dataset that exercises every feature in the dash
     <span class="docs-step-num">1</span>
     <div>
       <strong>Open the app</strong>
-      <p>Navigate to <code>http://localhost:8080</code> in your browser.</p>
+      <p>Navigate to <code>http://127.0.0.1:4474</code> in your browser after starting the dashboard.</p>
     </div>
   </li>
   <li>
@@ -35,7 +35,7 @@ It's a complete, self-contained dataset that exercises every feature in the dash
     <span class="docs-step-num">3</span>
     <div>
       <strong>Explore</strong>
-      <p>The app fetches the JSON file, parses it, and renders all five tabs. Start with Overview, then try each tab.</p>
+      <p>The app fetches the bundled JSON file, parses it, and renders all five tabs. Start with Overview, then try each tab.</p>
     </div>
   </li>
 </ol>
@@ -73,7 +73,7 @@ After loading the demo, here are some things to notice:
   <i class="fa-solid fa-circle-info"></i>
   <div>
     <strong>About the Data</strong>
-    <p>The demo session is a real OpenCode conversation that has been anonymized. Session IDs, file paths, and other identifiers have been preserved to show realistic tool call patterns.</p>
+    <p>The demo session is a real OpenCode conversation that has been trimmed and anonymized. Session IDs, file paths, and other identifiers have been preserved to show realistic tool call patterns.</p>
   </div>
 </div>
 
