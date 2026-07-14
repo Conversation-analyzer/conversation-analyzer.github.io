@@ -49,10 +49,8 @@
       "title": "Architecture",
       "items": [
         { "title": "Overview", "file": "architecture/overview.md" },
-        { "title": "Parser", "file": "architecture/parser.md" },
-        { "title": "Extractor", "file": "architecture/extractor.md" },
-        { "title": "Renderer", "file": "architecture/renderer.md" },
-        { "title": "ConversationSpec", "file": "architecture/conversation-spec.md" }
+        { "title": "ConversationSpec", "file": "architecture/conversation-spec.md" },
+        { "title": "Renderer", "file": "architecture/renderer.md" }
       ]
     },
     {

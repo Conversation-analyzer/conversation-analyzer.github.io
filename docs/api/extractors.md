@@ -1,6 +1,17 @@
-## Extractors
+## Extractors API
 
-Extract specific data slices from a ConversationSpec.
+Six pure functions that take a [ConversationSpec](/docs?doc=architecture/conversation-spec) and return a single, view-ready slice. Defined in `frontend/js/extractor.js`.
+
+```javascript
+import {
+    extractSession,
+    extractMetrics,
+    extractMessages,
+    extractTools,
+    extractTimeline,
+    extractSummary
+} from "frontend/js/extractor.js";
+```
 
 <div class="docs-table-wrap">
   <table class="docs-table">
@@ -17,7 +28,7 @@ Extract specific data slices from a ConversationSpec.
       </tr>
       <tr>
         <td><code>extractMetrics(conv)</code></td>
-        <td>Token counts, cache stats, cost, and health score.</td>
+        <td>Token counts, cache stats, cost, and health score inputs.</td>
       </tr>
       <tr>
         <td><code>extractMessages(conv)</code></td>
@@ -29,7 +40,7 @@ Extract specific data slices from a ConversationSpec.
       </tr>
       <tr>
         <td><code>extractTimeline(conv)</code></td>
-        <td>Sorted timeline events for the event stream view.</td>
+        <td>Timeline events, sorted newest-first.</td>
       </tr>
       <tr>
         <td><code>extractSummary(conv)</code></td>
@@ -38,3 +49,5 @@ Extract specific data slices from a ConversationSpec.
     </tbody>
   </table>
 </div>
+
+All functions are null-safe (they default to empty values when the conversation or a sub-field is missing), so they can be called on partial data during live polling.
