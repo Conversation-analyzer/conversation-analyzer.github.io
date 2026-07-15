@@ -65,33 +65,12 @@
                 </ul>
             </div>
 
-            <!-- v0.2.0 -->
-            <div class="release-card reveal">
-                <div class="release-header">
-                    <span class="release-version">v0.2.0</span>
-                    <span class="tag tag-muted">Coming Soon</span>
-                </div>
-                <ul class="release-list">
-                    <li class="release-item" style="color:var(--muted)">Additional platform connectors and enhanced analytics</li>
-                </ul>
-            </div>
-
-            <!-- v0.3.0 -->
-            <div class="release-card reveal">
-                <div class="release-header">
-                    <span class="release-version">v0.3.0</span>
-                    <span class="tag tag-muted">Coming Soon</span>
-                </div>
-                <ul class="release-list">
-                    <li class="release-item" style="color:var(--muted)">Multi-session comparison and advanced performance insights</li>
-                </ul>
-            </div>
-
             <!-- v1.0.0 -->
             <div class="release-card reveal">
                 <div class="release-header">
                     <span class="release-version">v1.0.0</span>
-                    <span class="tag tag-muted">Coming Soon</span>
+                    <span class="tag tag-green">Released</span>
+                    <span class="tag tag-muted">July 2026</span>
                 </div>
                 <ul class="release-list">
                     <li class="release-item" style="color:var(--muted)">Stable release with full platform support and plugin system</li>
@@ -122,24 +101,11 @@
                     <span class="release-date">July 2026</span>
                 </div>
                 <ul class="release-list">
-                    <li class="release-item">Backend logs now written to a rotating log file instead of the host terminal</li>
-                    <li class="release-item">Added a size-based rotating logger (~10&nbsp;MB per file, 5 backups) at <code>~/.local/share/conversation-analyzer/logs/</code></li>
-                    <li class="release-item">Fixed AG Grid runtime errors — removed the unsupported <code>theme</code> grid option and imported the missing <code>formatDuration</code> helper</li>
+                    <li class="release-item">Replaced host-terminal logging with a size-based rotating log file (~10&nbsp;MB/file, 5 backups) at <code>~/.local/share/conversation-analyzer/logs/</code>, with timestamped, leveled entries and safe fallbacks</li>
+                    <li class="release-item">Fully silenced backend console output — all <code>console.*</code> calls now redirect to the log file, so plugin logs no longer clutter the OpenCode terminal</li>
                     <li class="release-item">Configurable log directory and rotation via <code>CONV_ANALYZER_LOG_*</code> environment variables</li>
-                </ul>
-            </div>
-
-            <!-- v1.2.1 -->
-            <div class="release-card reveal">
-                <div class="release-header">
-                    <span class="release-version">v1.2.1</span>
-                    <span class="tag tag-green">Released</span>
-                    <span class="release-date">July 2026</span>
-                </div>
-                <ul class="release-list">
-                    <li class="release-item">Fully silenced backend console output — every <code>console.*</code> method now redirects to the log file, so plugin logs no longer clutter the OpenCode terminal</li>
+                    <li class="release-item">Fixed AG Grid runtime errors — removed the unsupported <code>theme</code> grid option and imported the missing <code>formatDuration</code> helper</li>
                     <li class="release-item">Added true-uninstall cleanup: <code>npm uninstall</code> / <code>npm run uninstall</code> removes the OpenCode config entry and plugin cache, and prompts before deleting captured data and logs</li>
-                    <li class="release-item">Hardened the rotating logger with safe fallbacks and timestamped, leveled entries</li>
                 </ul>
             </div>
 

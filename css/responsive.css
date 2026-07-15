@@ -184,6 +184,10 @@
         gap: 10px;
     }
     .docs-footer .btn { width: 100%; justify-content: center; }
+
+    .release-card { 
+        overflow: auto;
+    }
 }
 
 /* ===========================
