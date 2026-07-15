@@ -23,7 +23,8 @@
       "items": [
         { "title": "App Settings", "file": "configuration/app-settings.md" },
         { "title": "Backend Config", "file": "configuration/backend-config.md" },
-        { "title": "Supported Backends", "file": "configuration/supported-backends.md" }
+        { "title": "Supported Backends", "file": "configuration/supported-backends.md" },
+        { "title": "Logging & Uninstall", "file": "configuration/logging.md" }
       ]
     },
     {

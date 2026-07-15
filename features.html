@@ -391,6 +391,66 @@
         </div>
     </section>
 
+    <!-- Feature 13: Quiet, Rotating Logs -->
+    <section class="section" id="quiet-logs">
+        <div class="container">
+            <div class="content-grid reveal">
+                <div class="content-block">
+                    <span class="section-label">13</span>
+                    <h2>Quiet, Rotating Logs</h2>
+                    <p>Backend plugin logs — request traces, lifecycle events, and errors — are written to a rotating log file on disk instead of being printed to your terminal. When AI Conversation Analyzer runs as an OpenCode plugin, your terminal stays clean and focused on what matters.</p>
+                    <div class="divider"></div>
+                    <h4>What's Inside</h4>
+                    <p>Logs are appended to <code>~/.local/share/conversation-analyzer/logs/conversation-analyzer.log</code> with timestamped, leveled entries (info, warn, error). Once a file reaches 10&nbsp;MB it rotates, keeping up to 5 backups. Every <code>console.*</code> call from the backend is captured, so nothing leaks to the host terminal. The location and rotation thresholds are configurable through environment variables.</p>
+                    <div class="divider"></div>
+                    <h4>Future Plans</h4>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+                        <span class="tag tag-green">In-app log viewer</span>
+                        <span class="tag tag-blue">Log level filtering</span>
+                        <span class="tag tag-amber">JSON-formatted logs</span>
+                        <span class="tag tag-purple">Remote log shipping</span>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <div class="feature-illustration">
+                        <i class="fa-solid fa-scroll" style="font-size: 4rem; color: var(--blue); opacity: 0.15;"></i>
+                        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">Backend logs stay in a rotating file, not your terminal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 14: Clean Uninstall -->
+    <section class="section section-alt" id="clean-uninstall">
+        <div class="container">
+            <div class="content-grid reveal">
+                <div class="content-block">
+                    <div class="feature-illustration">
+                        <i class="fa-solid fa-broom" style="font-size: 4rem; color: var(--amber); opacity: 0.15;"></i>
+                        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">Removing the plugin cleans up its config and cache</p>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <span class="section-label">14</span>
+                    <h2>Clean Uninstall</h2>
+                    <p>Removing AI Conversation Analyzer cleans up after itself. Whether you run <code>npm uninstall</code> or <code>npm run uninstall</code>, the cleanup routine removes the plugin's entry from your OpenCode configuration and deletes OpenCode's cached copy of the plugin — no leftover files.</p>
+                    <div class="divider"></div>
+                    <h4>What's Inside</h4>
+                    <p>The uninstall hook strips the <code>"plugin"</code> reference from <code>opencode.jsonc</code> and removes OpenCode's plugin cache directories. Your captured conversations and logs are treated as user data: the uninstaller prompts before deleting them when run interactively, and leaves them in place by default when run non-interactively, so you never lose analysis data by accident.</p>
+                    <div class="divider"></div>
+                    <h4>Future Plans</h4>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+                        <span class="tag tag-green">One-command purge</span>
+                        <span class="tag tag-blue">Dry-run mode</span>
+                        <span class="tag tag-amber">Data migration export</span>
+                        <span class="tag tag-purple">Uninstall receipts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA -->
     <section class="section">
         <div class="container">
